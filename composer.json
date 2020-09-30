@@ -1,0 +1,29 @@
+{
+	"name": "bka/bka2021",
+	"description": "A theme for BKA to resemble striking_r, based on Alecaddd WordPress Starter Theme AWPS",
+	"keywords": ["WordPress", "Theme", "Starter"],
+	"homepage": "https://github.com/waterleat/bka2020",
+	"license": "GPL-3.0",
+	"version": "3.0.5",
+	"authors": [
+		{
+			"name": "Alessandro Castellani",
+			"email": "me@alecaddd.com",
+			"homepage": "http://alecaddd.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"vlucas/phpdotenv": "^3.3"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "^1.0.0",
+		"phpcompatibility/phpcompatibility-wp": "^2.0.0",
+		"wp-coding-standards/wpcs": "^2.0.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
+	},
+	"autoload": {
+		"psr-4": { "Bka2021\\": "./inc" },
+		"files": [ "./inc/Helpers.php" ]
+	}
+}
