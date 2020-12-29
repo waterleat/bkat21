@@ -19,12 +19,12 @@ class Enqueue
 		// add_filter('script_loader_tag', array( $this, 'add_async_defer_attribute'), 10, 2);
 	}
 
-	public function add_async_defer_attribute($tag, $handle) {
-		if ( 'googleapis' == $handle ){
-			$tag = str_replace( ' src', ' async defer src', $tag );
-		}
-		return $tag;
-	}
+	// public function add_async_defer_attribute($tag, $handle) {
+	// 	if ( 'googleapis' == $handle ){
+	// 		$tag = str_replace( ' src', ' async defer src', $tag );
+	// 	}
+	// 	return $tag;
+	// }
 
 	public function custom_excerpt_length( $length ) {
 		return 20;
@@ -84,18 +84,18 @@ class Enqueue
 				wp_enqueue_style( 'front', get_template_directory_uri() . '/assets/dist/css/front.css', array(), '1.0.0', 'all' );
 				wp_enqueue_script( 'xl', get_template_directory_uri() . '/assets/dist/js/xl.js', array(), '1.0.0', true );
 			}
-			if (is_page( 'change-dojo-session-details' )) {
-				wp_enqueue_script( 'gm', get_template_directory_uri() . '/assets/src/scripts/geo.js', array(), '1.0.0', true );
-				wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initMap'], 'https://maps.googleapis.com/maps/api/js' )), array(), null, true );
-			}
-			if (is_page( 'dojo-details' )) {
-				wp_enqueue_script( 'gmsm', get_template_directory_uri() . '/assets/src/scripts/geosm.js', array(), '1.0.0', true );
-				wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initddMap'], 'https://maps.googleapis.com/maps/api/js' )), array(), null, true );
-			}
-			if (is_page( 'dojo-map' )) {
-				wp_enqueue_script( 'gmdojomap', get_template_directory_uri() . '/assets/src/scripts/dojomap.js', array(), '1.0.0', true );
-				wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initDojoMap'], 'https://maps.googleapis.com/maps/api/js' ) ), array(), null, true );
-			}
+			// if (is_page( 'change-dojo-session-details' )) {
+			// 	wp_enqueue_script( 'gm', get_template_directory_uri() . '/assets/src/scripts/geo.js', array(), '1.0.0', true );
+			// 	wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initMap'], 'https://maps.googleapis.com/maps/api/js' )), array(), null, true );
+			// }
+			// if (is_page( 'dojo-details' )) {
+			// 	wp_enqueue_script( 'gmsm', get_template_directory_uri() . '/assets/src/scripts/geosm.js', array(), '1.0.0', true );
+			// 	wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initddMap'], 'https://maps.googleapis.com/maps/api/js' )), array(), null, true );
+			// }
+			// if (is_page( 'dojo-map' )) {
+			// 	wp_enqueue_script( 'gmdojomap', get_template_directory_uri() . '/assets/src/ukmap.js', array(), '1.0.0', true );
+			// 	wp_enqueue_script('googleapis', esc_url( add_query_arg(  ['key'=>$google_map_api,'callback'=>'initukMap'], 'https://maps.googleapis.com/maps/api/js' ) ), array(), null, true );
+			// }
 		}
 
 		// Activate browser-sync on development environment
