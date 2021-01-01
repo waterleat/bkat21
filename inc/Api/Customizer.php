@@ -22,9 +22,9 @@ class Customizer
 	 */
 	public function register()
 	{
-		add_action( 'wp_head', array($this , 'output') );
+		add_action( 'wp_head', [ $this , 'output' ] );
 
-		add_action( 'customize_register', array( $this, 'setup' ) );
+		add_action( 'customize_register', [ $this, 'setup' ] );
 	}
 
 	/**

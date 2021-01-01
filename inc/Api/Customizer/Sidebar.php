@@ -21,29 +21,29 @@ class Sidebar
 	 */
 	public function register( $wp_customize )
 	{
-		$wp_customize->add_section( 'bka2021_sidebar_section' , array(
+		$wp_customize->add_section( 'bka2021_sidebar_section' , [
 			'title' => __( 'Sidebar', 'bka2021' ),
 			'description' => __( 'Customize the Sidebar' ),
 			'priority' => 161
-		) );
+		] );
 
-		$wp_customize->add_setting( 'bka2021_sidebar_background_color' , array(
+		$wp_customize->add_setting( 'bka2021_sidebar_background_color' , [
 			'default' => '#ffffff',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
-		) );
+		] );
 
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_sidebar_background_color', array(
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_sidebar_background_color', [
 			'label' => __( 'Background Color', 'bka2021' ),
 			'section' => 'bka2021_sidebar_section',
 			'settings' => 'bka2021_sidebar_background_color',
-		) ) );
+		] ) );
 
 		if ( isset( $wp_customize->selective_refresh ) ) {
-			$wp_customize->selective_refresh->add_partial( 'bka2021_sidebar_background_color', array(
+			$wp_customize->selective_refresh->add_partial( 'bka2021_sidebar_background_color', [
 				'selector' => '#bka2021-sidebar-control',
-				'render_callback' => array( $this, 'output' ),
+				'render_callback' => [ $this, 'output' ],
 				'fallback_refresh' => true
-			) );
+			] );
 		}
 	}
 

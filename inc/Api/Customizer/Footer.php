@@ -23,46 +23,46 @@ class Footer
 	 */
 	public function register( $wp_customize )
 	{
-		$wp_customize->add_section( 'bka2021_footer_section' , array(
+		$wp_customize->add_section( 'bka2021_footer_section' , [
 			'title' => __( 'Footer', 'bka2021' ),
 			'description' => __( 'Customize the Footer' ),
 			'priority' => 162
-		) );
+		] );
 
-		$wp_customize->add_setting( 'bka2021_footer_background_color' , array(
+		$wp_customize->add_setting( 'bka2021_footer_background_color' , [
 			'default' => '#ffffff',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
-		) );
+		] );
 
-		$wp_customize->add_setting( 'bka2021_footer_copy_text' , array(
+		$wp_customize->add_setting( 'bka2021_footer_copy_text' , [
 			'default' => 'Proudly powered by AWPS',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
-		) );
+		] );
 
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_footer_background_color', array(
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_footer_background_color', [
 			'label' => __( 'Background Color', 'bka2021' ),
 			'section' => 'bka2021_footer_section',
 			'settings' => 'bka2021_footer_background_color',
-		) ) );
+		] ) );
 
-		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bka2021_footer_copy_text', array(
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'bka2021_footer_copy_text', [
 			'label' => __( 'Copyright Text', 'bka2021' ),
 			'section' => 'bka2021_footer_section',
 			'settings' => 'bka2021_footer_copy_text',
-		) ) );
+		] ) );
 
 		if ( isset( $wp_customize->selective_refresh ) ) {
-			$wp_customize->selective_refresh->add_partial( 'bka2021_footer_background_color', array(
+			$wp_customize->selective_refresh->add_partial( 'bka2021_footer_background_color', [
 				'selector' => '#bka2021-footer-control',
-				'render_callback' => array( $this, 'outputCss' ),
+				'render_callback' => [ $this, 'outputCss' ],
 				'fallback_refresh' => true
-			) );
+			] );
 
-			$wp_customize->selective_refresh->add_partial( 'bka2021_footer_copy_text', array(
+			$wp_customize->selective_refresh->add_partial( 'bka2021_footer_copy_text', [
 				'selector' => '#bka2021-footer-copy-control',
-				'render_callback' => array( $this, 'outputText' ),
+				'render_callback' => [ $this, 'outputText' ],
 				'fallback_refresh' => true
-			) );
+			] );
 		}
 	}
 

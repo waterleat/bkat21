@@ -21,26 +21,26 @@ class Header
 	 */
 	public function register( $wp_customize )
 	{
-		$wp_customize->add_section( 'bka2021_header_section' , array(
+		$wp_customize->add_section( 'bka2021_header_section' , [
 			'title' => __( 'Header', 'bka2021' ),
 			'description' => __( 'Customize the Header' ),
 			'priority' => 35
-		) );
+		] );
 
 		// $wp_customize->add_setting( 'bka2021_header_background_color' , array(
 		// 	'default' => '#ffffff',
 		// 	'transport' => 'postMessage', // or refresh if you want the entire page to reload
 		// ) );
 
-		$wp_customize->add_setting( 'bka2021_header_text_color' , array(
+		$wp_customize->add_setting( 'bka2021_header_text_color' , [
 			'default' => '#333333',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
-		) );
+		] );
 
-		$wp_customize->add_setting( 'bka2021_header_link_color' , array(
+		$wp_customize->add_setting( 'bka2021_header_link_color' , [
 			'default' => '#004888',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
-		) );
+		] );
 
 		// $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_header_background_color', array(
 		// 	'label' => __( 'Header Background Color', 'bka2021' ),
@@ -48,49 +48,49 @@ class Header
 		// 	'settings' => 'bka2021_header_background_color',
 		// ) ) );
 
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_header_text_color', array(
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_header_text_color', [
 			'label' => __( 'Header Text Color', 'bka2021' ),
 			'section' => 'bka2021_header_section',
 			'settings' => 'bka2021_header_text_color',
-		) ) );
+		] ) );
 
-		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_header_link_color', array(
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bka2021_header_link_color', [
 			'label' => __( 'Header Link Color', 'bka2021' ),
 			'section' => 'bka2021_header_section',
 			'settings' => 'bka2021_header_link_color',
-		) ) );
+		] ) );
 
 		$wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
 		if ( isset( $wp_customize->selective_refresh ) ) {
-			$wp_customize->selective_refresh->add_partial( 'blogname', array(
+			$wp_customize->selective_refresh->add_partial( 'blogname', [
 				'selector' => '.site-title ',
 				'render_callback' => function() {
 					bloginfo( 'name' );
 				},
-			) );
-			$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+			] );
+			$wp_customize->selective_refresh->add_partial( 'blogdescription', [
 				'selector' => '.site-description',
 				'render_callback' => function() {
 					bloginfo( 'description' );
 				},
-			) );
+			] );
 			// $wp_customize->selective_refresh->add_partial( 'bka2021_header_background_color', array(
 			// 	'selector' => '#bka2021-header-control',
 			// 	'render_callback' => array( $this, 'outputCss' ),
 			// 	'fallback_refresh' => true
 			// ) );
-			$wp_customize->selective_refresh->add_partial( 'bka2021_header_text_color', array(
+			$wp_customize->selective_refresh->add_partial( 'bka2021_header_text_color', [
 				'selector' => '#bka2021-header-control',
-				'render_callback' => array( $this, 'outputCss' ),
+				'render_callback' => [ $this, 'outputCss' ],
 				'fallback_refresh' => true
-			) );
-			$wp_customize->selective_refresh->add_partial( 'bka2021_header_link_color', array(
+			] );
+			$wp_customize->selective_refresh->add_partial( 'bka2021_header_link_color', [
 				'selector' => '#bka2021-header-control',
-				'render_callback' => array( $this, 'outputCss' ),
+				'render_callback' => [ $this, 'outputCss' ],
 				'fallback_refresh' => true
-			) );
+			] );
 		}
 	}
 

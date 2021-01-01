@@ -12,9 +12,9 @@ class TextWidget extends WP_Widget
 
 	public $widget_name;
 
-	public $widget_options = array();
+	public $widget_options = [];
 
-	public $control_options = array();
+	public $control_options = [];
 
 	function __construct() {
 
@@ -22,16 +22,16 @@ class TextWidget extends WP_Widget
 
 		$this->widget_name = 'AWPS Custom Text';
 
-		$this->widget_options = array(
+		$this->widget_options = [
 			'classname' => $this->widget_ID,
 			'description' => $this->widget_name . ' Widget',
 			'customize_selective_refresh' => true,
-		);
+		];
 
-		$this->control_options = array(
+		$this->control_options = [
 			'width' => 400,
 			'height' => 350,
-		);
+		];
 	}
 	/**
      * register default hooks and actions for WordPress
@@ -41,7 +41,7 @@ class TextWidget extends WP_Widget
 	{
 		parent::__construct( $this->widget_ID, $this->widget_name, $this->widget_options, $this->control_options );
 
-		add_action( 'widgets_init', array( $this, 'widgetsInit' ) );
+		add_action( 'widgets_init', [ $this, 'widgetsInit' ] );
 	}
 
 	/**
@@ -78,7 +78,7 @@ class TextWidget extends WP_Widget
 		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'bka2021' ); ?></label>
 		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		<?php
+		<?php[]
 	}
 
 	/**
