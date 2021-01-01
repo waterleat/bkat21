@@ -21,9 +21,9 @@ class ThemeJetpack
             return;
         }
 
-        add_action( 'after_setup_theme', array( $this, 'setup' ) );
+        add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
-        add_filter( 'jetpack_photon_pre_args', array( $this, 'photon_compression' ) );
+        add_filter( 'jetpack_photon_pre_args', [ $this, 'photon_compression' ] );
 
     }
 
@@ -31,11 +31,12 @@ class ThemeJetpack
     {
 
         // Add theme support for Infinite Scroll.
-        add_theme_support('infinite-scroll', array(
+        add_theme_support('infinite-scroll',
+		[
             'container' => 'main',
-            'render' => array($this, 'infinite_scroll_render'),
+            'render' => [ $this, 'infinite_scroll_render' ],
             'footer' => 'page',
-        ));
+        ] );
 
         // Add theme support for Responsive Videos.
         add_theme_support( 'jetpack-responsive-videos' );
@@ -46,15 +47,15 @@ class ThemeJetpack
         while (have_posts()) {
             the_post();
             if (is_search()) :
-                get_template_part('views/content', 'search'); else :
-                get_template_part('views/content', get_post_format());
+                get_template_part( 'views/content', 'search' ); else :
+                get_template_part( 'views/content', get_post_format() );
             endif;
         }
     }
 
     public function photon_compression( $args ) {
-        $args['quality'] = 100;
-        $args['strip'] = 'all';
+        $args[ 'quality' ] = 100;
+        $args[ 'strip' ] = 'all';
         return $args;
     }
 }

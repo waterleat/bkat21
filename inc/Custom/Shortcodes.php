@@ -17,7 +17,7 @@ class Shortcodes
     // add_action('wp_loaded', array( $this, 'theme_portfolio_ajax_init'));
     //
     // add_shortcode('portfolio', array( $this,  'theme_shortcode_portfolio'));
-    add_shortcode( 'blog', array( $this, 'recent_posts_shortcode' ));
+    add_shortcode( 'blog', [ $this, 'recent_posts_shortcode' ] );
 
   }
 
@@ -26,9 +26,9 @@ class Shortcodes
 
   	// Attributes
   	$atts = shortcode_atts(
-  		array(
+  		[
   			'count' => '5',
-  		),
+  		],
   		$atts,
   		'blog'
   	);
@@ -82,11 +82,11 @@ class Shortcodes
 		// require_once (get_template_directory() . '/shortcodes/portfolios.php');
 		// require_once (get_template_directory() . '/shortcodes/slideshow.php');
 		// require_once (get_template_directory() . '/shortcodes/widgets.php');
-		require_once (get_template_directory() . '/shortcodes/media.php');
+		// require_once (get_template_directory() . '/shortcodes/media.php');
 		// require_once (get_template_directory() . '/shortcodes/lightbox.php');
 		// require_once (get_template_directory() . '/shortcodes/chart.php');
 		// require_once (get_template_directory() . '/shortcodes/sitemap.php');
-		require_once (get_template_directory() . '/shortcodes/iframe.php');
+		// require_once (get_template_directory() . '/shortcodes/iframe.php');
 		// require_once (get_template_directory() . '/shortcodes/gallery.php');
 		// require_once (get_template_directory() . '/shortcodes/gmap.php');
 		// require_once (get_template_directory() . '/shortcodes/carousel.php');
@@ -94,7 +94,7 @@ class Shortcodes
 		// require_once (get_template_directory() . '/shortcodes/testimonials.php');
 	}
   public function theme_shortcode_portfolio($atts, $content = null, $code) {
-  	$opts = shortcode_atts(array(
+  	$opts = shortcode_atts( [
   		'column' => 4,
   		'layout' => 'full',//sidebar
   		'cat' => '',
@@ -123,7 +123,7 @@ class Shortcodes
   		'orderby'=> 'menu_order', //none, id, author, title, date, modified, parent, rand, comment_count, menu_order
   		'rel_group' => 'portfolio_'.rand(1,1000),
   		'class' => '',
-  	), $atts);
+  	], $atts);
 
   	extract($opts);
   	switch($column){
@@ -185,7 +185,7 @@ class Shortcodes
   				$output .= '<a data-value="all" href="#">'.__('All','striking-r').'</a>';
   			}
   		}
-  		$terms = array();
+  		$terms = [];
   		if ($cat != '') {
   			foreach(explode(',', $cat) as $term_slug) {
   				$terms[] = get_term_by('slug', $term_slug, 'portfolio_category');
@@ -241,7 +241,7 @@ class Shortcodes
   		return;
   	}
 
-  	$options = array();
+  	$options = [];
   	if(isset($_POST['portfolioOptions']))
   		$options =  $_POST['portfolioOptions'];
 

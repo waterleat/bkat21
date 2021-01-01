@@ -13,7 +13,7 @@ class Menus
      */
     public function register()
     {
-        add_action( 'after_setup_theme', array( $this, 'menus' ) );
+        add_action( 'after_setup_theme', [ $this, 'menus' ] );
     }
 
     public function menus()
@@ -21,7 +21,8 @@ class Menus
         /*
             Register all your menus here
         */
-        register_nav_menus(array(
+        register_nav_menus(
+		[
             'primary' => esc_html__( 'Primary', 'bka2021' ),
             'primary2' => esc_html__( 'Primary2', 'bka2021' ),
             // 'login' => esc_html__( 'Login', 'bka2021' ),
@@ -36,6 +37,6 @@ class Menus
             'cs2' => esc_html__( 'Central Services 2', 'bka2021' ),
             'buAdmin' => esc_html__( 'Bu Officers', 'bka2021' ),
             'membershipAdmin' => esc_html__( 'Membership Officers', 'bka2021' ),
-        ));
+        ] );
     }
 }

@@ -6,21 +6,21 @@ use Walker_Nav_Menu;
 
 class WalkerNav extends Walker_Nav_Menu
 {
-    public function start_lvl(&$output, $depth = 0, $args = array())
+    public function start_lvl(&$output, $depth = 0, $args = [])
     {
         $indent = str_repeat("\t", $depth);
         $submenu = ($depth > 0) ? ' sub-menu' : '';
         $output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\" >\n";
     }
 
-    public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+    public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
     {
         $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
         $li_attributes = '';
         $class_names = $value = '';
 
-        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
         // managing divider: add divider class to an element to get a divider before it.
         $divider_class_position = array_search('divider', $classes);
         if ($divider_class_position !== false) {
@@ -76,14 +76,14 @@ class WalkerNav extends Walker_Nav_Menu
         $id_field = $this->db_fields['id'];
 
         //display this element
-        if (is_array($args[0])) {
+        if ( is_array($args[0] ) ) {
             $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
         } elseif (is_object($args[0])) {
             $args[0]->has_children = !empty($children_elements[$element->$id_field]);
         }
 
-        $cb_args = array_merge(array(&$output, $element, $depth), $args);
-        call_user_func_array(array($this, 'start_el'), $cb_args);
+        $cb_args = array_merge( [ &$output, $element, $depth ], $args);
+        call_user_func_array( [ $this, 'start_el' ], $cb_args);
 
         $id = $element->$id_field;
 
@@ -93,8 +93,8 @@ class WalkerNav extends Walker_Nav_Menu
                 if (!isset($newlevel)) {
                     $newlevel = true;
               //start the child delimiter
-              $cb_args = array_merge(array(&$output, $depth), $args);
-                    call_user_func_array(array($this, 'start_lvl'), $cb_args);
+              $cb_args = array_merge( [ &$output, $depth ], $args);
+                    call_user_func_array( [$this, 'start_lvl' ], $cb_args);
                 }
                 $this->display_element($child, $children_elements, $max_depth, $depth + 1, $args, $output);
             }
@@ -103,23 +103,23 @@ class WalkerNav extends Walker_Nav_Menu
 
         if (isset($newlevel) && $newlevel) {
             //end the child delimiter
-          $cb_args = array_merge(array(&$output, $depth), $args);
-            call_user_func_array(array($this, 'end_lvl'), $cb_args);
+          $cb_args = array_merge( [ &$output, $depth ], $args);
+            call_user_func_array( [ $this, 'end_lvl' ], $cb_args);
         }
 
         //end this element
-        $cb_args = array_merge(array(&$output, $element, $depth), $args);
-        call_user_func_array(array($this, 'end_el'), $cb_args);
+        $cb_args = array_merge( [ &$output, $element, $depth ], $args);
+        call_user_func_array( [ $this, 'end_el' ], $cb_args);
     }
 }
 
 class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
 
-    function start_lvl(&$output, $depth=0, $args = array()) {    }
+    function start_lvl(&$output, $depth=0, $args = []) {    }
 
-    function end_lvl(&$output, $depth=0, $args = array()) {    }
+    function end_lvl(&$output, $depth=0, $args = []) {    }
 
-    function start_el(&$output, $item, $depth=0, $args=array(), $id = 0) {
+    function start_el(&$output, $item, $depth=0, $args=[], $id = 0) {
         // Here is where we create each option.
         $item_output = '';
 
@@ -141,7 +141,7 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
 
     }
 
-    function end_el(&$output, $item, $depth=0,$args=array()) {
+    function end_el(&$output, $item, $depth=0,$args=[]) {
         // Close the item.
         $output .= "</option>\n";
 
@@ -152,21 +152,21 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
 
 class WalkerNav2 extends Walker_Nav_Menu
 {
-    public function start_lvl(&$output, $depth = 0, $args = array())
+    public function start_lvl(&$output, $depth = 0, $args = [])
     {
         $indent = str_repeat("\t", $depth);
         $submenu = ($depth > 0) ? ' sub-menu' : '';
         $output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\" >\n";
     }
 
-    public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+    public function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
     {
         $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
         $li_attributes = '';
         $class_names = $value = '';
 
-        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
         // managing divider: add divider class to an element to get a divider before it.
         $divider_class_position = array_search('divider', $classes);
         if ($divider_class_position !== false) {
@@ -228,8 +228,8 @@ class WalkerNav2 extends Walker_Nav_Menu
             $args[0]->has_children = !empty($children_elements[$element->$id_field]);
         }
 
-        $cb_args = array_merge(array(&$output, $element, $depth), $args);
-        call_user_func_array(array($this, 'start_el'), $cb_args);
+        $cb_args = array_merge( [ &$output, $element, $depth ], $args);
+        call_user_func_array( [ $this, 'start_el' ], $cb_args);
 
         $id = $element->$id_field;
 
@@ -239,8 +239,8 @@ class WalkerNav2 extends Walker_Nav_Menu
                 if (!isset($newlevel)) {
                     $newlevel = true;
               //start the child delimiter
-              $cb_args = array_merge(array(&$output, $depth), $args);
-                    call_user_func_array(array($this, 'start_lvl'), $cb_args);
+              $cb_args = array_merge( [ &$output, $depth ], $args);
+                    call_user_func_array( [ $this, 'start_lvl' ], $cb_args);
                 }
                 $this->display_element($child, $children_elements, $max_depth, $depth + 1, $args, $output);
             }
@@ -249,12 +249,12 @@ class WalkerNav2 extends Walker_Nav_Menu
 
         if (isset($newlevel) && $newlevel) {
             //end the child delimiter
-          $cb_args = array_merge(array(&$output, $depth), $args);
-            call_user_func_array(array($this, 'end_lvl'), $cb_args);
+          $cb_args = array_merge( [ &$output, $depth ], $args);
+            call_user_func_array( [ $this, 'end_lvl' ], $cb_args);
         }
 
         //end this element
-        $cb_args = array_merge(array(&$output, $element, $depth), $args);
-        call_user_func_array(array($this, 'end_el'), $cb_args);
+        $cb_args = array_merge( [ &$output, $element, $depth ], $args);
+        call_user_func_array( [ $this, 'end_el' ], $cb_args);
     }
 }

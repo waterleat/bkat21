@@ -68,20 +68,20 @@ class Admin
 	private function enqueue()
 	{
 		// Scripts multidimensional array with styles and scripts
-		$scripts = array(
-			'script' => array(
+		$scripts = [
+			'script' => [
 				'jquery',
 				'media_uploader',
 				get_template_directory_uri() . '/assets/dist/js/admin.js'
-			),
-			'style' => array(
+			],
+			'style' => [
 				get_template_directory_uri() . '/assets/dist/css/admin.css',
 				'wp-color-picker'
-			)
-		);
+			]
+		];
 
 		// Pages array to where enqueue scripts
-		$pages = array( 'toplevel_page_bka2021' );
+		$pages = [ 'toplevel_page_bka2021' ];
 
 		// Enqueue files in Admin area
 		$this->settings->admin_enqueue( $scripts, $pages );
@@ -97,14 +97,14 @@ class Admin
 	private function enqueue_faq( Settings $settings )
 	{
 		// Scripts multidimensional array with styles and scripts
-		$scripts = array(
-			'style' => array(
+		$scripts = [
+			'style' => [
 				get_template_directory_uri() . '/assets/dist/css/admin.css',
-			)
-		);
+			]
+		];
 
 		// Pages array to where enqueue scripts
-		$pages = array( 'bka2021_page_bka2021_faq' );
+		$pages = [ 'bka2021_page_bka2021_faq' ];
 
 		// Enqueue files in Admin area
 		$settings->admin_enqueue( $scripts, $pages )->register();
@@ -116,28 +116,28 @@ class Admin
 	 */
 	private function pages()
 	{
-		$admin_pages = array(
-			array(
+		$admin_pages = [
+			[
 				'page_title' => 'Theme Admin Page',
 				'menu_title' => 'BKA Theme',
 				'capability' => 'manage_options',
 				'menu_slug' => 'bka2021',
-				'callback' => array( $this->callback, 'admin_index' ),
+				'callback' => [ $this->callback, 'admin_index' ],
 				'icon_url' => get_template_directory_uri() . '/assets/dist/images/admin-icon.png',
 				'position' => 110,
-			)
-		);
+			]
+		];
 
-		$admin_subpages = array(
-			array(
+		$admin_subpages = [
+			[
 				'parent_slug' => 'bka2021',
 				'page_title' => 'Bka2021 FAQ',
 				'menu_title' => 'FAQ',
 				'capability' => 'manage_options',
 				'menu_slug' => 'bka2021_faq',
-				'callback' => array( $this->callback, 'admin_faq' )
-			)
-		);
+				'callback' => [ $this->callback, 'admin_faq' ]
+			]
+		];
 
 		// Create multiple Admin menu pages and subpages
 		$this->settings->addPages( $admin_pages )->withSubPage( 'Settings' )->addSubPages( $admin_subpages );
@@ -152,13 +152,13 @@ class Admin
 	private function settings()
 	{
 		// Register settings
-		$args = array(
-			array(
+		$args = [
+			[
 				'option_group' => 'bka2021_options_group',
 				'option_name' => 'first_name',
-				'callback' => array( $this->callback, 'bka2021_options_group' )
-			)
-		);
+				'callback' => [ $this->callback, 'bka2021_options_group' ]
+			]
+		];
 
 		$this->settings->add_settings( $args );
 
@@ -172,14 +172,14 @@ class Admin
 	private function sections()
 	{
 		// Register sections
-		$args = array(
-			array(
+		$args = [
+			[
 				'id' => 'bka2021_admin_index',
 				'title' => 'Settings',
-				'callback' => array( $this->callback, 'bka2021_admin_index' ),
+				'callback' => [ $this->callback, 'bka2021_admin_index' ],
 				'page' => 'bka2021'
-			)
-		);
+			]
+		];
 
 		$this->settings->add_sections( $args );
 
@@ -193,30 +193,30 @@ class Admin
 	private function fields()
 	{
 		// Register fields
-		$args = array(
-			array(
+		$args = [
+			[
 				'id' => 'first_name',
 				'title' => 'First Name',
-				'callback' => array( $this->callback, 'first_name' ),
+				'callback' => [ $this->callback, 'first_name' ],
 				'page' => 'bka2021',
 				'section' => 'bka2021_admin_index',
-				'args' => array(
+				'args' => [
 					'label_for' => 'first_name',
 					'class' => ''
-				)
-			),
-			array(
+				]
+			],
+			[
 				'id' => 'last_name',
 				'title' => 'Last Name',
-				'callback' => array( $this->callback, 'last_name' ),
+				'callback' => [ $this->callback, 'last_name' ],
 				'page' => 'bka2021',
 				'section' => 'bka2021_admin_index',
-				'args' => array(
+				'args' => [
 					'label_for' => 'last_name',
 					'class' => ''
-				)
-			)
-		);
+				]
+			]
+		];
 
 		$this->settings->add_fields( $args );
 

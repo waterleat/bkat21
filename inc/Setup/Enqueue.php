@@ -13,8 +13,8 @@ class Enqueue
 	 */
 	public function register()
 	{
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length' ), 999 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_filter( 'excerpt_length', [ $this, 'custom_excerpt_length' ], 999 );
 
 		// add_filter('script_loader_tag', array( $this, 'add_async_defer_attribute'), 10, 2);
 	}
@@ -54,11 +54,11 @@ class Enqueue
 		// }
 
 		// CSS
-		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/dist/css/style.css', array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/dist/css/style.css', [], '1.0.0', 'all' );
 		wp_enqueue_style( 'dashicons' );
 
 		// JS
-		wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/dist/js/app.js', array(), '1.0.0', true );
+		wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/dist/js/app.js', [], '1.0.0', true );
 
 
 // source: https://codex.wordpress.org/Conditional_Tags#The_Front_Page
@@ -81,8 +81,8 @@ class Enqueue
 		} else {
 		  //everything else
 			if (is_page( 'xl' )) {
-				wp_enqueue_style( 'front', get_template_directory_uri() . '/assets/dist/css/front.css', array(), '1.0.0', 'all' );
-				wp_enqueue_script( 'xl', get_template_directory_uri() . '/assets/dist/js/xl.js', array(), '1.0.0', true );
+				wp_enqueue_style( 'front', get_template_directory_uri() . '/assets/dist/css/front.css', [], '1.0.0', 'all' );
+				wp_enqueue_script( 'xl', get_template_directory_uri() . '/assets/dist/js/xl.js', [], '1.0.0', true );
 			}
 			// if (is_page( 'change-dojo-session-details' )) {
 			// 	wp_enqueue_script( 'gm', get_template_directory_uri() . '/assets/src/scripts/geo.js', array(), '1.0.0', true );

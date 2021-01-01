@@ -1,38 +1,39 @@
 // document.addEventListener('DOMContentLoaded', (e) => {
 
 
-    // const mapLat = document.querySelector('#mapLat'),
-    //     mapLng = document.querySelector('#mapLng');
-    // let zoom = 12;
-    // var map, initialLocation, marker;
-    // initddMap();
+// const mapLat = document.querySelector('#mapLat'),
+// 	mapLng = document.querySelector('#mapLng');
+// let zoom = 12;
+// var map, initialLocation, marker;
+// initddMap();
 
 // });
 
 
-
-
 function initukMap() {
-    let initialLocation = new google.maps.LatLng( 54, -1);
-    let mapOptions = {
-        // mapTypeId: 'roadmap',
-        zoom: 7,
-        center: initialLocation,
-        // center: {lat: 51.397, lng: 0.644}
-        // styles: mapStyle
-    };
-    // Create the map.
-    const map = new google.maps.Map(document.getElementById('ukmap'), mapOptions);
-    let jsonSrc =new URL( window.location.protocol + window.location.host + '/dojo.json');
-    // Load the dojo GeoJSON onto the map.
-    map.data.loadGeoJson(jsonSrc);
+	let initialLocation = new google.maps.LatLng( 54, -1 );
+	let mapOptions = {
+		zoom: 7,
+		center: initialLocation
 
-    // Define the custom marker icons, using the store's "category".
-    map.data.setStyle(feature => {
-      return {
-        icon: {
-          url: `/wp-content/themes/bka2021/assets/dist/images/map/icon_${feature.getProperty('category')}.png`,
-          scaledSize: new google.maps.Size(32, 32),
+		// mapTypeId: 'roadmap',
+		// center: {lat: 51.397, lng: 0.644}
+		// styles: mapStyle
+	};
+
+	// Create the map.
+	const map = new google.maps.Map( document.getElementById( 'ukmap' ), mapOptions );
+	let jsonSrc = new URL( window.location.protocol + window.location.host + '/dojo.json' );
+
+	// Load the dojo GeoJSON onto the map.
+	map.data.loadGeoJson( jsonSrc );
+
+	// Define the custom marker icons, using the store's "category".
+	map.data.setStyle( feature => {
+		return {
+			icon: {
+				url: `/wp-content/themes/bka2021/assets/dist/images/map/icon_${feature.getProperty( 'category' )}.png`,
+				scaledSize: new google.maps.Size( 32, 32 ),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(16, 16)
         }

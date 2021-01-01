@@ -10,8 +10,8 @@ class Setup
      */
     public function register()
     {
-        add_action( 'after_setup_theme', array( $this, 'setup' ) );
-        add_action( 'after_setup_theme', array( $this, 'content_width' ), 0);
+        add_action( 'after_setup_theme', [ $this, 'setup' ] );
+        add_action( 'after_setup_theme', [ $this, 'content_width' ], 0);
     }
 
     public function setup()
@@ -33,23 +33,26 @@ class Setup
         add_theme_support( 'custom-logo' );
         add_theme_support( 'responsive-embeds' );
 
-        add_theme_support( 'html5', array(
+        add_theme_support( 'html5',
+		[
             'search-form',
             'comment-form',
             'comment-list',
             'gallery',
             'caption',
-        ) );
+        ] );
 
-        add_theme_support( 'custom-background', apply_filters( 'bka2021_custom_background_args', array(
+        add_theme_support( 'custom-background', apply_filters( 'bka2021_custom_background_args',
+		[
             'default-color' => 'ffffff',
             'default-image' => '',
-        ) ) );
+        ] ) );
 
         /*
          * Activate Post formats if you need
          */
-        add_theme_support( 'post-formats', array(
+        add_theme_support( 'post-formats',
+		[
             'aside',
             'gallery',
             'link',
@@ -59,7 +62,7 @@ class Setup
             'video',
             'audio',
             'chat',
-        ) );
+        ] );
     }
 
     /*

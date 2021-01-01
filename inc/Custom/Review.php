@@ -11,7 +11,7 @@ class Review
 	{
 
 
-		add_action( 'eventorganiser_created_event', array( $this, 'bka2021_link_review' ), 10, 1 );
+		add_action( 'eventorganiser_created_event', [ $this, 'bka2021_link_review' ], 10, 1 );
     // add_action( 'wp_ajax_bka2021_load_more', array( $this, 'bka2021_load_more' ) );
 	}
 

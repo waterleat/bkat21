@@ -13,7 +13,7 @@ class Sidebar
      */
     public function register()
     {
-        add_action( 'widgets_init', array( $this, 'widgets_init' ) );
+        add_action( 'widgets_init', [ $this, 'widgets_init' ] );
     }
 
     /*
@@ -22,7 +22,8 @@ class Sidebar
     public function widgets_init()
     {
       // has to be lowercase for ID name of sidebar -- theme root dir/sidebar.php
-        register_sidebar( array(
+        register_sidebar(
+		[
             'name' => esc_html__('Sidebar', 'bka2021'),
             'id' => 'bka2021-sidebar',
             'description' => esc_html__('Default sidebar to add all your widgets.', 'bka2021'),
@@ -30,10 +31,11 @@ class Sidebar
             'after_widget' => '</section>',
             'before_title' => '<h2 class="text-redish font-normal widget-title">',
             'after_title' => '</h2>',
-        ) );
+        ] );
 
         // widget area above footer
-        register_sidebar( array(
+        register_sidebar(
+		[
             'name' => esc_html__('AboveFooter', 'bka2021'),
             'id' => 'bka2021-footbar',
             'description' => esc_html__('Area below main content to add widgets.', 'bka2021'),
@@ -41,6 +43,6 @@ class Sidebar
             'after_widget' => '</section>',
             'before_title' => '<h3 class="my-2 font-bold widget-title">',
             'after_title' => '</h3>',
-        ) );
+        ] );
     }
 }

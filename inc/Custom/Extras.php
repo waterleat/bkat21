@@ -13,7 +13,7 @@ class Extras
      */
 	public function register()
 	{
-		add_filter( 'body_class', array( $this, 'body_class' ) );
+		add_filter( 'body_class', [ $this, 'body_class' ] );
 	}
 
 	public function body_class( $classes )

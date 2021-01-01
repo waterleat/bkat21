@@ -60,7 +60,7 @@ class Tags
 		if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
 			echo '<span class="comments-link">';
 			/* translators: %s: post title */
-			comments_popup_link(sprintf(wp_kses(__('Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bka2021'), array('span' => array('class' => array()))), get_the_title()));
+			comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bka2021' ), array( 'span' => array( 'class' => [] ) ) ), get_the_title() ) );
 			echo '</span>';
 		}
 		edit_post_link(
