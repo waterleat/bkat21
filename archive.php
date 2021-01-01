@@ -18,34 +18,29 @@ get_header(); ?>
 	<div class="flex flex-col md:flex-row p-4 bg-white">
 
 		<div id="primary" class="content-area w-full md:w-2/3 p-4">
-			<?php
-				the_archive_description( '<div class="archive-description">', '</div>' );
- 			?>
+			<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 			<main id="main" class="site-main" role="main">
 
 				<?php
-					/* Start the Loop */
-					if ( have_posts() ) :
+				/* Start the Loop */
+				if ( have_posts() ) :
 
-						while ( have_posts() ) :
+					while ( have_posts() ) :
 
-							the_post();
+						the_post();
+						get_template_part( 'views/content', get_post_format() );
 
-							get_template_part( 'views/content', get_post_format() );
+					endwhile;
+					?>
+					<div id="paged_nav">
+						<?php echo paginate_links(); ?>
+					</div>
+					<?php
+				else :
 
-						endwhile;
-						?>
-			      <div id="paged_nav">
-		        <?php
-							echo paginate_links();
-						?>
-						</div>
-						<?php
-					else :
+					get_template_part( 'views/content', 'none' );
 
-						get_template_part( 'views/content', 'none' );
-
-					endif;
+				endif;
 				?>
 
 				</main><!-- #main -->
@@ -53,7 +48,7 @@ get_header(); ?>
 
 
 		<div class="w-full md:w-1/3 px-2 pt-8   bg-white">
-			<?php  get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 		</div><!-- .col- -->
 
 	</div><!-- .row -->
