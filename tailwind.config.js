@@ -13,7 +13,6 @@ module.exports = {
 			body: [ 'Lucida Sans Unicode', 'Lucida Grande', 'Garuda', 'sans-serif' ]
 		},
 		screens: {
-			ys: '340px',
 			xs: '512px',
 
 			sm: '640px',

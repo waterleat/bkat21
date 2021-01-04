@@ -9,7 +9,7 @@
  *
  * For a list of available functions (outputting dates, venue details etc) see http://codex.wp-event-organiser.com
  *
- ***************** NOTICE: *****************
+ * **************** NOTICE: *****************
  *  Do not make changes to this file. Any changes made to this file
  * will be overwritten if the plug-in is updated.
  *
@@ -17,11 +17,12 @@
  * in your theme directory. See http://docs.wp-event-organiser.com/theme-integration for more information
  *
  * WordPress will automatically prioritise the template in your theme directory.
- ***************** NOTICE: *****************
+ * **************** NOTICE: *****************
  *
  * @package Event Organiser (plug-in)
  * @since 1.7
  */
+
 ?>
 
 <div class="eventorganiser-event-meta">
@@ -32,78 +33,88 @@
 	<h4 class="text-lg font-bold "><?php _e( 'Event Details', 'eventorganiser' ); ?></h4>
 
 	<!-- Is event recurring or a single event -->
-	<?php if ( eo_recurs() ) :?>
-		<!-- Event recurs - is there a next occurrence? -->
-		<?php $next = eo_get_next_occurrence( eo_get_event_datetime_format() );?>
+	<?php
+	if ( eo_recurs() ) {
+		// Event recurs - is there a next occurrence?
+		$next = eo_get_next_occurrence( eo_get_event_datetime_format() );
 
-		<?php if ( $next ) : ?>
-			<!-- If the event is occurring again in the future, display the date -->
-			<?php printf( '<p>' . __( 'This event is running from %1$s until %2$s. It is next occurring on %3$s', 'eventorganiser' ) . '</p>', eo_get_schedule_start( 'j F Y' ), eo_get_schedule_last( 'j F Y' ), $next );?>
-
-		<?php else : ?>
-			<!-- Otherwise the event has finished (no more occurrences) -->
-			<?php printf( '<p>' . __( 'This event finished on %s', 'eventorganiser' ) . '</p>', eo_get_schedule_last( 'd F Y', '' ) );?>
-		<?php endif; ?>
-	<?php endif; ?>
+		if ( $next ) {
+			// If the event is occurring again in the future, display the date.
+			printf( '<p>' . __( 'This event is running from %1$s until %2$s. It is next occurring on %3$s', 'eventorganiser' ) . '</p>', eo_get_schedule_start( 'j F Y' ), eo_get_schedule_last( 'j F Y' ), $next );
+		} else {
+			// Otherwise the event has finished (no more occurrences).
+			printf( '<p>' . __( 'This event finished on %s', 'eventorganiser' ) . '</p>', eo_get_schedule_last( 'd F Y', '' ) );
+		}
+	}
+	?>
 <div class="eo-event-meta flex flex-col">
 	<ul class="list-disc pl-6 mb-4">  <!-- class was eo-event-meta  -->
 
-		<?php if ( ! eo_recurs() ) { ?>
+		<?php
+		if ( ! eo_recurs() ) {
+			?>
 			<!-- Single event -->
-			<li><strong><?php esc_html_e( 'Date', 'eventorganiser' );?>:</strong> <?php echo eo_format_event_occurrence();?></li>
-		<?php } ?>
+			<li><strong><?php esc_html_e( 'Date', 'eventorganiser' ); ?>:</strong> <?php echo eo_format_event_occurrence(); ?></li>
+			<?php
+		}
 
-		<?php if ( eo_get_venue() ) {
-			$tax = get_taxonomy( 'event-venue' ); ?>
-			<li><strong><?php echo esc_html( $tax->labels->singular_name ) ?>:</strong> <a href="<?php eo_venue_link(); ?>"> <?php eo_venue_name(); ?></a></li>
-		<?php } ?>
+		if ( eo_get_venue() ) {
+			$tax = get_taxonomy( 'event-venue' );
+			?>
+			<li><strong><?php echo esc_html( $tax->labels->singular_name ); ?>:</strong> <a href="<?php eo_venue_link(); ?>"> <?php eo_venue_name(); ?></a></li>
+			<?php
+		}
 
-		<?php if ( get_the_terms( get_the_ID(), 'event-category' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-category' ) ) ) { ?>
+		if ( get_the_terms( get_the_ID(), 'event-category' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-category' ) ) ) { ?>
 			<li><strong><?php esc_html_e( 'Categories', 'eventorganiser' ); ?>:</strong> <?php echo get_the_term_list( get_the_ID(),'event-category', '', ', ', '' ); ?></li>
-		<?php } ?>
+			<?php
+		}
 
-		<?php if ( get_the_terms( get_the_ID(), 'event-tag' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-tag' ) ) ) { ?>
+		if ( get_the_terms( get_the_ID(), 'event-tag' ) && ! is_wp_error( get_the_terms( get_the_ID(), 'event-tag' ) ) ) { ?>
 			<li><strong><?php esc_html_e( 'Tags', 'eventorganiser' ); ?>:</strong> <?php echo get_the_term_list( get_the_ID(), 'event-tag', '', ', ', '' ); ?></li>
-		<?php } ?>
+			<?php
+		}
 
-		<?php if ( eo_recurs() ) {
-				//Event recurs - display dates.
-				$upcoming = new WP_Query(array(
+		if ( eo_recurs() ) {
+			//Event recurs - display dates.
+			$upcoming = new WP_Query(
+				array(
 					'post_type'         => 'event',
 					'event_start_after' => 'today',
 					'posts_per_page'    => -1,
 					'event_series'      => get_the_ID(),
 					'group_events_by'   => 'occurrence',
-				));
+				)
+			);
 
-				if ( $upcoming->have_posts() ) : ?>
+			if ( $upcoming->have_posts() ) {
+				?>
 
-					<li><strong><?php _e( 'Upcoming Dates', 'eventorganiser' ); ?>:</strong>
-						<ul class="list-disc pl-6 eo-upcoming-dates">
-							<?php
-							while ( $upcoming->have_posts() ) {
-								$upcoming->the_post();
-								echo '<li>' . eo_format_event_occurrence() . '</li>';
-							};
-							?>
-						</ul>
-					</li>
+				<li><strong><?php _e( 'Upcoming Dates', 'eventorganiser' ); ?>:</strong>
+					<ul class="list-disc pl-6 eo-upcoming-dates">
+						<?php
+						while ( $upcoming->have_posts() ) {
+							$upcoming->the_post();
+							echo '<li>' . eo_format_event_occurrence() . '</li>';
+						}
+						?>
+					</ul>
+				</li>
 
-					<?php
-					wp_reset_postdata();
-					//With the ID 'eo-upcoming-dates', JS will hide all but the next 5 dates, with options to show more.
-					wp_enqueue_script( 'eo_front' );
-					?>
-				<?php endif; ?>
-		<?php } ?>
+				<?php
+				wp_reset_postdata();
+				// With the ID 'eo-upcoming-dates', JS will hide all but the next 5 dates, with options to show more.
+				wp_enqueue_script( 'eo_front' );
+			}
+		}
 
-		<?php do_action( 'eventorganiser_additional_event_meta' ) ?>
-
+		do_action( 'eventorganiser_additional_event_meta' );
+		?>
 
 		<!-- <li><strong>Eventcode:</strong> <?php // echo $bu , eo_get_the_start( 'ymd', $post->ID, $post->occurrence_id ); ?></li> -->
 	</ul>
-	<div class="pl-16   py-4">
-		<a href="<?php echo esc_url( 'https://membership.britishkendoassociation.com/html/book_events.php' ) ?>" class="btn btn-blue "  >Book Event</a>
+	<div class="pl-16 py-4">
+		<a href="<?php echo esc_url( 'https://membership.britishkendoassociation.com/html/book_events.php' ); ?>" class="btn btn-blue "  >Book Event</a>
 	</div>
 </div>
 	<!-- Does the event have a venue? -->

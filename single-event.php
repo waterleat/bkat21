@@ -10,7 +10,7 @@
  *
  * For a list of available functions (outputting dates, venue details etc) see http://codex.wp-event-organiser.com/
  *
- ***************** NOTICE: *****************
+ * **************** NOTICE: *****************
  *  Do not make changes to this file. Any changes made to this file
  * will be overwritten if the plug-in is updated.
  *
@@ -18,13 +18,13 @@
  * in your theme directory. See http://docs.wp-event-organiser.com/theme-integration for more information
  *
  * WordPress will automatically prioritise the template in your theme directory.
- ***************** NOTICE: *****************
+ * **************** NOTICE: *****************
  *
  * @package Event Organiser (plug-in)
  * @since 1.0.0
  */
 
-//Call the template header
+// Call the template header.
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
@@ -51,15 +51,16 @@ get_header(); ?>
 
 					<footer class="entry-meta">
 					<?php
-					//Events have their own 'event-category' taxonomy. Get list of categories this event is in.
-					$categories_list = get_the_term_list( get_the_ID(), 'event-category', '', ', ','' );
+					// Events have their own 'event-category' taxonomy. Get list of categories this event is in.
+					$categories_list = get_the_term_list( get_the_ID(), 'event-category', '', ', ', '' );
 
-					if ( '' != $categories_list ) {
+					if ( '' !== $categories_list ) {
 						$utility_text = __( 'This event was posted in %1$s by <a href="%3$s">%2$s</a>.', 'eventorganiser' );
 					} else {
 						$utility_text = __( 'This event was posted by <a href="%3$s">%2$s</a>.', 'eventorganiser' );
 					}
-					printf($utility_text,
+					printf(
+						$utility_text,
 						$categories_list,
 						get_the_author(),
 						esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
@@ -77,8 +78,9 @@ get_header(); ?>
 		</div><!-- #primary -->
 
 		<div class="w-full md:w-1/3 px-2 pt-8   bg-white">
-			<?php  get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 		</div><!-- .col- -->
 
 	</div><!-- .row -->
-<?php get_footer();
+<?php
+get_footer();

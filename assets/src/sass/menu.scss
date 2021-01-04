@@ -1,0 +1,446 @@
+// The dropdown wrapper (`<div>`)
+.dropup,
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  // Generate the caret automatically
+  // @include caret;
+  &::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    // margin-left: .3em * .85;
+    vertical-align: .3em * .85;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+  }
+}
+
+// The dropdown menu
+.dropdown-menu {
+  // @apply .relative  ;
+  position: absolute;
+  // top: 100%;
+  // right: 0;
+  z-index: 300; // $zindex-dropdown;
+  // display: none; // none by default, but block on "open" of the menu
+  // float: right;
+  min-width: 10rem; // $dropdown-min-width;
+  // padding: .5rem; // $dropdown-padding-y 0;
+  margin: 0; // line below adds space between menu and dropdown
+  // margin: .125rem 0 0; // $dropdown-spacer 0 0; // override default ul
+  font-size: 1rem; // $font-size-base; // Redeclare because nesting can cause inheritance issues
+  color: black; // $body-color;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
+  // background-color: #fff; // $dropdown-bg;
+  // @apply .bg-purple-lightest ;
+  background-clip: padding-box;
+  // border: $dropdown-border-width solid $dropdown-border-color;
+  border: 1px solid rgba(black, .15);
+  // @include border-radius($dropdown-border-radius);
+  @apply .rounded ; // border-radius: .25rem;
+  // @include box-shadow($dropdown-box-shadow);
+  box-shadow: 0 .5rem 1rem rgba(black, .175);
+}
+
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+  height: 0;
+  margin: (1rem / 2) 0; // ($spacer / 2) 0;
+  // margin: 0;
+  overflow: hidden;
+  border-top: 1px solid #e5e5e5; // $dropdown-divider-bg;
+}
+
+// Links, buttons, and more within the dropdown menu
+//
+// `<button>`-specific styles are denoted with `// For <button>s`
+.dropdown-item {
+  display: block;
+  // float: left;
+  width: 100%; // For `<button>`s
+  // padding: .5rem;
+  // padding: .25rem 1.5rem; // $dropdown-item-padding-y $dropdown-item-padding-x;
+  clear: both;
+  font-weight: 400; // $font-weight-normal;
+  color: black; // grey-darkest; $dropdown-link-color;
+  text-align: inherit; // For `<button>`s
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+  background-color: transparent; // For `<button>`s
+  border: 0; // For `<button>`s
+
+
+
+  &.active,
+  &:active {
+    // color: $dropdown-link-active-color;
+    text-decoration: none;
+    // @include gradient-bg($dropdown-link-active-bg);
+  }
+
+  // &.disabled,
+  // &:disabled {
+  //   color: $dropdown-link-disabled-color;
+  //   background-color: transparent;
+  //   // Remove CSS gradients if they're enabled
+  //   @if $enable-gradients {
+  //     background-image: none;
+  //   }
+  // }
+}
+
+.dropdown-menu.show {
+  // display: block;
+  @apply .block ;
+}
+
+// Dropdown section headers
+.dropdown-header {
+  // display: block;
+  @apply .block ;
+  // padding: $dropdown-padding-y $dropdown-item-padding-x;
+  // margin-bottom: 0; // for use with heading elements
+  // font-size: $font-size-sm;
+  // color: $dropdown-header-color;
+  // white-space: nowrap; // as with > li > a
+  @apply .whitespace-no-wrap ;
+}
+
+.nav-toggle {
+  @apply .hidden ;
+}
+
+ul .dropdown-menu .sub-menu {
+  margin-left: 100px;
+  margin-top: -25px;
+}
+
+// May 2019 removed prior to tailwind 1.0
+
+// #login-menu {
+//   ul {
+//     @apply .bg-pink ;
+//   }
+//   li {
+//     margin-bottom: .5rem;
+//     background-color: blue;
+//     @apply .rounded-lg ;
+//     a {
+//       color: white;
+//     }
+//   }
+//   li:hover {
+//     @apply .bg-blue-lighter ;
+//   }
+//
+//   li.active {
+//     @apply .bg-purple-lightest ;
+//   }
+// }
+
+
+
+// Modified June 2019 to emulate Striking_r
+// May 2019 removed prior to tailwind 1.0
+
+#site-navigation{
+  position: relative;
+  z-index: 20;
+
+}
+ul#primary-menu {
+  // @apply .text-sm  ; // li-px-2 li-py-2  md:flex md:justify-end
+  @apply .inline-flex ;
+  // position: relative;
+  @apply .list-none .p-0 ;
+
+  li.menu-item-has-children {
+    ul.dropdown-menu {
+      @apply .hidden  .p-0 ;
+      // position: relative;
+
+      // left: -20px;
+      @apply .whitespace-no-wrap  ;
+    }
+  }
+
+  li.menu-item-has-children{
+    &:hover {
+      ul.dropdown-menu {
+        @apply .absolute ;
+        // left: 0;
+        // top: 100%;
+        @apply .block   ;
+        // position: absolute; top: 100; left: 500;
+        @apply .bg-gray-100 .border .rounded .border-gray-200 ;
+        // background-color: #fff; // $dropdown-bg;
+      }
+    }
+  }
+  li.menu-item-has-children{
+    ul.dropdown-menu {
+      li.menu-item-has-children{
+        ul.dropdown-menu {
+          @apply .hidden .relative ;
+          // left: -9999px;
+          @apply .whitespace-no-wrap ;
+        }
+      }
+    }
+  }
+  li.menu-item-has-children{
+    ul.dropdown-menu {
+      li.menu-item-has-children{
+        &:hover {
+          ul.dropdown-menu {
+            @apply .absolute  ;
+            // top: 100%;
+            @apply .block  ;
+            @apply .bg-gray-100 .border .rounded .border-gray-200 ;
+            // background-color: #fff; // $dropdown-bg;
+          }
+        }
+      }
+    }
+  }
+
+  li {
+    a {
+      @apply .text-xs .text-gray-700 ;
+      &:hover {
+        @apply .no-underline ;
+      }
+    }
+
+    ul li:hover {
+      @apply .bg-gray-200 ;
+    }
+  }
+
+
+  li.active {
+    // @apply .bg-purple-400 ;
+  }
+  // &:hover {
+  //   a {
+  //     @apply .text-gray-800 .no-underline ;
+  //   }
+  // }
+}
+
+#primary-menu2 {
+  option {
+    @apply .p-1 ;
+  }
+}
+
+#paged_nav {
+  .page-numbers {
+    @apply .mr-2 ;
+    &.current {
+      @apply .text-xl ;
+    }
+  }
+}
+
+// copied from striking_r
+#navigation {
+    position: absolute;
+    right: -5px;
+    bottom: 0;
+    height: 60px
+}
+@media only screen and (max-width: 767px) {
+  #navigation {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+.nav2select {
+    display: none;
+    margin-right: 15px
+}
+
+.jqueryslidemenu {
+    position: relative;
+    z-index: 400
+}
+
+.jqueryslidemenu ul {
+    z-index: 400;
+    padding: 0;
+    margin: 0;
+    list-style-type: none
+}
+
+.jqueryslidemenu > ul {
+    display: inline-block;
+    zoom:1}
+
+.jqueryslidemenu ul li {
+    position: relative;
+    display: inline;
+    float: left;
+    margin: 0
+}
+
+.jqueryslidemenu ul li a {
+    display: block;
+    height: 60px;
+    padding: 0 15px;
+    overflow: hidden;
+    line-height: 56px;
+    text-decoration: none;
+    background: url(../images/blank.gif) 0 0 repeat
+}
+
+* html .jqueryslidemenu ul li a {
+    display: inline-block
+}
+
+.jqueryslidemenu ul li ul {
+    position: absolute;
+    left: 100%;
+    z-index: 401;
+    display: none;
+    padding: 3px 0;
+    visibility: hidden;
+    border: 1px solid #e5e5e5;
+    border-top: 0
+}
+
+.jqueryslidemenu ul li ul li {
+    display: list-item;
+    float: none;
+    margin: 0
+}
+
+.jqueryslidemenu ul li ul li ul {
+    top: 0;
+    z-index: 402;
+    padding: 2px 0;
+    border: 1px solid #e5e5e5
+}
+
+.jqueryslidemenu ul li ul li a {
+    width: 200px;
+    padding: 5px 15px 7px;
+    margin: 0
+}
+
+.jqueryslidemenu ul ul li a,.jqueryslidemenu ul ul li a:link,.jqueryslidemenu ul ul li a:visited {
+    height: 100%;
+    line-height: 20px
+}
+
+.jqueryslidemenu ul li ul li a:hover,.jqueryslidemenu ul ul li a:hover {
+    padding: 5px 15px 7px;
+    border-right: 0;
+    border-left: 0
+}
+
+.jqueryslidemenu ul ul ul {
+    margin-top: -5px
+}
+
+.jqueryslidemenu ul li ul {
+    -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.1);
+    box-shadow: 1px 2px 3px rgba(0,0,0,.1)
+}
+
+.jqueryslidemenu .menu-subtitle {
+    display: block;
+    line-height: 1em
+}
+
+
+
+
+
+ul.dummy {
+  @apply  .text-lg  ;
+}
+
+ul.bu-menu {
+  li {
+    a,
+    a:visited {
+      color: blue;
+    }
+  }
+}
+
+ul.bu-menu, ul.dummy {
+  // position: absolute;
+
+  li.menu-item-has-children {
+    ul.dropdown-menu {
+      @apply .hidden .m-0 .p-0 ;
+      // left: -9999px;
+      @apply .whitespace-no-wrap ;
+    }
+  }
+
+  li.menu-item-has-children{
+
+    &:hover {
+      ul.dropdown-menu {
+        // left: 0;
+        // top: 100%;
+        @apply .block ;
+        @apply .bg-purple-200 ;
+      }
+    }
+  }
+
+  li:hover {
+    @apply .bg-blue-200 ;
+  }
+
+  li.active {
+    @apply .bg-purple-400 ;
+  }
+}
+
+ul.dropdown-menu {
+  &:hover {
+    // @apply .bg-red ;
+    // @apply .block ;
+  }
+}
+
+
+/* nav-toggle section */
+// May 2019 removed prior to tailwind 1.0
+
+// .navtoggle span,
+// .navtoggle span::before,
+// .navtoggle span::after {
+//   position: absolute;
+//   // margin-left: 1rem;
+//   // width: 100%;
+//   @apply .bg-black .h-1 .w-8 .rounded ;
+// }
+//
+// .navtoggle span::before,
+// .navtoggle span::after {
+//   margin: -1rem;
+//   content: '';
+//   position: absolute;
+// }
+// .navtoggle span::before {
+//   bottom: .5rem;
+// }
+// .navtoggle span::after {
+//   top: .5rem;
+// }

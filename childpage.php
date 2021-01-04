@@ -17,7 +17,7 @@
 
 $parent_page_id = wp_get_post_parent_id( $post_ID );
 $parent_title = get_the_title( $post->post_parent );
-$parent_title = 'Other pages in '.$parent_title.' are:';
+$parent_title = 'Other pages in ' . $parent_title . ' are:';
 
 get_header(); ?>
 
@@ -25,7 +25,6 @@ get_header(); ?>
 
 	<div class="flex flex-col align-stretch">
 
-		<!-- <div class="sm:w-3/4 px-2"> -->
 		<div class=" p-4">
 
 			<div id="primary" class="content-area">
@@ -33,10 +32,12 @@ get_header(); ?>
 					<div class="bg-green-400 p-4 ">
 						<ul class="list-disc pl-6 li-py-2">
 						<?php
-						wp_list_pages( array(
-							'title_li'    => $parent_title ,
-							'child_of' => $parent_page_id
-						) );
+						wp_list_pages(
+							[
+								'title_li' => $parent_title,
+								'child_of' => $parent_page_id,
+							]
+						);
 						?>
 
 						</ul>
@@ -62,11 +63,8 @@ get_header(); ?>
 			</div><!-- #primary -->
 
 		</div><!-- .col- -->
-<!-- disabled sidebar oct 2018 -->
-		<div class=" p-4">
-			<?php // get_sidebar(); ?>
-		</div>
 
+		<!-- sidebar could go here -->
 	</div><!-- .row -->
 
 </div><!-- .container -->

@@ -55,7 +55,7 @@ $number = get_post_meta($post_id, '_slideshow_number', true);
               <?php
                 // the_post_thumbnail('medium', ['class' => ' md:mr-4 mx-auto mb-4' ]);
                 // the_post_thumbnail('full', ['class' => 'w-full overflow-y-hidden h-32' ]);
-                the_post_thumbnail('full', ['class' => 'h-full  ' ]);
+                the_post_thumbnail( 'full', ['class' => 'h-full  ' ] );
               ?>
             </div>
           <?php } ?>

@@ -1,0 +1,85 @@
+body {
+  font-family: 'Lucida Sans Unicode','Lucida Grande',Garuda,sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: #333;
+  background: url(http://www.britishkendoassociation.com/wp-content/themes/striking_r/images/patterns/navy_blue.png) repeat scroll 0 0;
+}
+
+.body-wrap {
+  width: 1020px; /* 980+ */
+  width: 768px;  /* 768+ */
+  width: 568px;  /* 568+ */
+  width: 480px;  /* 480+ */
+  width: 320px;
+  margin: 0 auto;
+}
+
+#header {
+  font-size: 100%;
+  position: relative;
+  z-index: 1050;
+  width: 100%;
+  background-color: rgb(255,255,255);
+  background-image: url(http://www.britishkendoassociation.com/wp-content/uploads/2015/02/BKA_text1.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: 100% auto;
+}
+
+.inner {
+  position: relative;
+  height: 160px;  /* greater than 968 */
+  width: 980px;  /* greater than 968 */
+  height: auto;  /* up to 979 */
+  width: 748px;  /* 768 to 979 */
+  overflow: hidden; /* only screen and (max-width: 767px) */
+  width: 548px;  /* 568 to 767 */
+  width: 460px;  /* 480 to 567 */
+  width: 300px;  /* up to 479 */
+  box-sizing: border-box;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin: 0 auto;
+}
+
+#logo {
+  bottom 0;              /* 980+ */
+  position: absolute;    /* 980+ */
+  left: 0;        /* 768+ */
+  left: auto;     /* up to 767 - logo centers*/
+  text-align: center;     /* up to 767 */
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  position: relative;    /* upt to 979 */
+  bottom: auto!important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#top_area {
+  position: absolute;     /* 768+ */
+  top: 10px;              /* 768+ */
+  right: 10px;            /* 768+ */
+  position: relative;  /* up to 767 */
+  top: auto;           /* up to 767 */
+  right: auto;         /* up to 767 */
+  display: none;   /* up to 320 */
+}
+
+#navigation {
+  position: absolute;/* 980+ */
+  right: -5px;       /* 980+ */
+  bottom: 0;         /* 980+ */
+  height: 60px;      /* 980+ */
+  height: auto;        /* upt to 979 */
+  right: auto;         /* upt to 979 */
+  width: auto;         /* upt to 979 */
+  position: relative;  /* upt to 979 */
+  bottom: auto;        /* upt to 979 */
+  margin: 0 auto;   /* up to 767 */
+
+  z-index: 400;   /* from jqueryslidemenu class */
+}

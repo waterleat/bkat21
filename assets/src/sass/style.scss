@@ -1,0 +1,371 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ */
+@tailwind base;
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ * // @import "components";
+ * // @import "components/home";
+ */
+@import "components/butons";
+
+.upshadow {
+  box-shadow: 0 -4px 8px 0 rgba(0,0,0,0.2);
+            // 0 -2px 4px 0 rgba(0,0,0,0.1);
+}
+
+.mylogin {
+  @apply  .mx-auto .border .border-purple-500 .py-4 .px-6 .max-w-sm .mt-4 ;
+  // max-width: 80%;
+  form {
+    @apply .flex .flex-col ;
+    p {
+    }
+  }
+}
+
+.login-username, .login-password {
+  @apply  .flex .flex-row ;
+  label {
+    @apply .w-1/2 .pr-6 .text-right ;
+  }
+  input {
+    @apply .w-1/2 .flex .justify-end ;
+  }
+}
+.login-remember {
+  @apply  .flex .flex-row .justify-end ;
+  label {
+    @apply .text-center  ;
+    @apply .w-1/2 ;
+  }
+  // @apply .w-4/5 ;
+  input {
+    @apply .mx-4  ;
+  }
+}
+.login-submit {
+  margin-left: 50%;
+  @apply  .flex .flex-row .justify-center ;
+  input {
+    @apply .text-center .px-6 .py-4 ;
+  }
+}
+
+
+    // background-color: pink ;
+    // background-image: url('BKA_logo3.png');
+    // background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-position: center;
+
+
+
+figure {
+  @apply .block ;
+}
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* Make sure embeds and iframes fit their containers. */
+
+embed,
+iframe,
+object {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+/* Remove bottom on embeds that wrapped in paragraphs via wpautop. */
+
+p > embed:only-child,
+p > iframe:only-child,
+p > object:only-child {
+	margin-bottom: 0;
+}
+
+.wp-caption,
+.gallery-caption {
+	color: #666;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+@import "components/gallery.scss" ;
+
+
+// html tags to make WordPress show correctly
+p {
+  @apply .py-2 ;
+}
+h1 {
+  @apply .text-4xl .font-bold .my-2 ;
+}
+h2 {
+  @apply .text-2xl .font-bold .my-3 ;
+}
+h3 {
+  @apply .text-xl .font-bold .my-4 ;
+}
+h4 {
+  @apply .text-lg .font-bold .my-5 ;
+}
+
+.front-page {
+  h2 {
+    @apply .text-3xl .text-blueish .font-normal ;
+  }
+}
+main {
+  // margin-top: -8px;
+  // // @apply .-mt-2 ;
+  // margin-bottom: -20px;
+  // // @apply .-mb-4 ;
+  h4 {
+    @apply .text-blueish ;
+  }
+}
+
+ol, ul {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+ol {
+  list-style-type: decimal;
+}
+ul {
+  list-style-type: disc;
+}
+
+a {
+  // tailwind 1.0 has no underline by default
+  // @apply .no-underline ;
+  @apply .text-rblue ;
+  &:hover{
+    @apply .underline ;
+  }
+  &:visited{
+    // @apply .text-blue-royal ;
+  }
+}
+
+
+@import "menu";
+
+.li-mx-4 li{
+  @apply .mx-4 ;
+}
+
+@responsive{
+  .li-px-2 li{
+    @apply .px-2 ;
+  }
+  .li-px-3 li{
+    @apply .px-3 ;
+  }
+  .li-px-4 li{
+    @apply .px-4 ;
+  }
+  .li-py-1 li{
+    @apply .py-1 ;
+  }
+  .li-py-2 li{
+    @apply .py-2 ;
+  }
+  .li-pl-4 li{
+      @apply .pl-4 ;
+  }
+  .li-pb-0 li{
+      @apply .pb-0 ;
+  }
+  .li-pb-4 li{
+      @apply .pb-4 ;
+  }
+}
+
+.grey-table  {
+  table, th, td {
+    @apply .border .border-grey055 ;
+  }
+}
+
+.thead-tr-th-p-2 thead{
+  tr{
+    th{
+      @apply .p-2 ;
+    }
+  }
+}
+.tbody-tr-td-p-2 tbody{
+  tr{
+    td{
+      @apply .p-2 ;
+    }
+  }
+}
+
+
+// Event organiser classes
+// widget area in sidebar
+.eo-widget-cal-wrap table {
+  width: 90%;
+  @apply .mx-auto ;
+}
+.post-thumbnail {
+  img{
+    width: 100% ;
+    height: auto ;
+    @apply .pt-4 ;
+  }
+}
+
+#eo-event-categories-2, #eo_event_list_widget-3 {
+  ul {
+    @apply .list-none .pl-6 ;
+  }
+}
+
+// May 2019 removed prior to tailwind 1.0
+
+// .-mt-50p{
+//   margin-top: -50px;
+// }
+
+
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+/**
+* // @import "utilities";
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
+ @import "accessibility";
+
+.wp-block-image.is-resized{
+  width: fit-content;
+}
+.wp-block-image .align-right img{
+  // @apply .float-right ;
+  margin-left: auto ;
+}
+.wp-block-image .align-left img{
+  // @apply .float-right ;
+  margin-right: auto ;
+}
+
+/** happy form
+  **/
+.happyforms-form {
+  // background-color: yellow;
+  @apply .border-2 .border-gray-600 .rounded .bg-gray-400 ;
+}
+.happyforms-form__title {
+  @apply .bg-gray-500 .py-4 ;
+}
+.happyforms-flex {
+  // @apply .bg-grey-light .px-2 ;
+}
+// footer section
+.inner {
+  ul{
+    @apply .pl-3 .list-none;
+    li {
+      @apply .text-sm .py-1 ;
+      a {
+        @apply .text-gray-800 ;
+      }
+      a:hover {
+        @apply .text-blue-400 .no-underline ;
+      }
+    }
+  }
+  select {
+    @apply .ml-3 .p-1 .bg-white .border .border-gray-600 .rounded .cursor-pointer ;
+  }
+}
+
+.search-form {
+  @apply .flex ;
+}
+.search-field {
+  @apply .p-1 .border .border-gray-400 ;
+  &:focus {
+    @apply .border-purple-500 ;
+  }
+}
+
+.search-submit {
+  @apply .ml-2 .px-2 .py-1 .cursor-pointer .border .rounded .bg-gray-400 ;
+  &:hover {
+    @apply .bg-gray-700 .text-white ;
+  }
+}

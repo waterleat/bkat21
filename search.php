@@ -17,21 +17,22 @@ get_header(); ?>
 <div class="flex flex-col md:flex-row p-4 bg-white">
 
 	<div id="primary" class="content-area w-full md:w-2/3 p-4">
-    <main id="main" class="site-main" role="main">
+		<main id="main" class="site-main" role="main">
 
 			<?php
 			if ( have_posts() ) :
-			?>
+				?>
 
 				<header>
 					<h2 class=" page-title">
 					<?php
 					printf(
 						/* translators: %s: Search Term. */
-						esc_html__( 'Search Results for: %s', 'bka2021' ), '<span>' . get_search_query() . '</span>'
+						esc_html__( 'Search Results for: %s', 'bka2021' ),
+						'<span>' . get_search_query() . '</span>'
 					);
 					?>
-				</h2>
+					</h2>
 				</header><!-- .page-header -->
 
 				<?php
@@ -57,8 +58,8 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 	<div class="w-full md:w-1/3 px-2 pt-8   bg-white">
-    <?php  get_sidebar(); ?>
-  </div>
+		<?php get_sidebar(); ?>
+	</div>
 
 </div><!-- .row -->
 

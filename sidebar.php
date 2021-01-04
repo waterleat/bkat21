@@ -7,7 +7,7 @@
  * @package bka2021
  */
 
-// has to be lowercase for ID name of sidebar --- inc/core/sidebar.php
+// has to be lowercase for ID name of sidebar --- inc/core/sidebar.php .
 if ( ! is_active_sidebar( 'bka2021-sidebar' ) ) :
 	return;
 endif;

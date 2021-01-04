@@ -27,6 +27,8 @@
 	<exclude-pattern>acf-json/index.php</exclude-pattern>
 	<exclude-pattern>wp-config.sample.php</exclude-pattern>
 	<exclude-pattern>*/inc/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/shortcodes/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/assets/dist/svg/*</exclude-pattern>
 
@@ -39,7 +41,7 @@
 	<!-- Include WordPress I18n ruleset-->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="awps,tgmpa" />
+			<property name="text_domain" type="array" value="bka2021,eventorganiser" />
 		</properties>
 	</rule>
 	<!-- Include PHP Compatibility Coding Standard for WordPress. -->

@@ -1,4 +1,16 @@
 <?php
+/**
+ * The template for page-new
+ *
+ * not sure it is used now
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package bka2021
+ */
+
+?>
+<?php
 if (!isset($_SESSION['dojoregion'])) {
   $_SESSION['dojoregion'] = 0;
   $_SESSION['dojokendo'] = 0;
