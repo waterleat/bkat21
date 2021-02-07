@@ -25,7 +25,8 @@
 	<!-- can style be added using wp_body_open -->
 	<?php wp_body_open(); ?>
 	<div id="page" class="site w-full md:container mx-auto text-grey055 font-body text-sm lg:text-base" <?php echo ! is_customize_preview() ? '' : 'style="padding: 0 40px;"'; ?>>
-		<header id="masthead" class="w-full bg-white" style="background-image: url( <?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_text1.jpg ); background-repeat: no-repeat; background-position: center center; background-attachment: scroll; background-size: 100% auto;">
+		<header id="masthead" class="w-full bg-white" >
+			<!-- style="background-image: url( <?php // bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_text1.jpg ); background-repeat: no-repeat; background-position: center center; background-attachment: scroll; background-size: 100% auto;"> -->
 
 				<div id="headerblock" class="relative flex flex-col  md:flex-row h-auto px-3"  role="banner">
 					<?php
@@ -34,10 +35,13 @@
 					}
 					?>
 
-					<div class="logo mx-auto md:ml-0 pb-6 md:pt-0 md:pb-4  md:my-0 px-2">
+					<div class="relative logo mx-auto pt-6 md:pb-4 md:pt-0 md:pl-2  md:m-0 z-10">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img src="<?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_logo.png" class="">
 						</a>
+					</div>
+					<div class="absolute inset-0  md:relative md:mx-auto ">
+						<h3 class="font-display text-center md:text-left m-0 text-xl pt-32 md:pt-16 md:text-2xl lg:text-4xl text-indigo-900"><?php // bloginfo( 'title' ); ?>BRITISH KENDO ASSOCIATION</h3>
 					</div>
 
 					<div class="absolute top-0 right-0">
@@ -53,7 +57,7 @@
 								<?php
 							} else {
 								?>
-								<a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-orange-600 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span> Login / Register'</a>
+								<a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-orange-600 to-red-500 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
 								<?php
 							}
 							?>

@@ -56,6 +56,7 @@ class Enqueue
 		// CSS
 		wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/dist/css/style.css', [], '1.0.0', 'all' );
 		wp_enqueue_style( 'dashicons' );
+		wp_enqueue_style( 'custom-google-fonts', 'https://fonts.googleapis.com/css2?family=Prompt:wght@900&display=swap', false );
 
 		// JS
 		wp_enqueue_script( 'main', get_template_directory_uri() . '/assets/dist/js/app.js', [], '1.0.0', true );

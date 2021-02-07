@@ -10,7 +10,8 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-			body: [ 'Lucida Sans Unicode', 'Lucida Grande', 'Garuda', 'sans-serif' ]
+			body: [ 'Lucida Sans Unicode', 'Lucida Grande', 'Garuda', 'sans-serif' ],
+			display: [ 'Prompt' ]
 		},
 		screens: {
 			xs: '512px',

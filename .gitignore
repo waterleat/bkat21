@@ -69,8 +69,8 @@ yarn.lock
 ##########
 /README.html
 /build/
-/assets/dist/css/*.css
-/assets/dist/js/*.js
+assets/dist/css/*.css
+assets/dist/js/*.js
 mix-manifest.json
 
 # PhpStrom Project Files #
@@ -91,3 +91,4 @@ Rails
 # My settings #
 removed/
 membership/extra/
+err.txt
