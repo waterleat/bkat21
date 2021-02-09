@@ -9,6 +9,8 @@
  * @package bka2021
  */
 
+$membership_login_url = "https://membership.britishkendoassociation.com/login.php";
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -47,20 +49,8 @@
 					<div class="absolute top-0 right-0">
 						<div class="flex flex-col justify-around content-around md:flex-row md:w-80 h-full my-4 mr-2 md:mr-0">
 							<?php
-							if ( is_user_logged_in() ) {
-								?>
-								<a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-orange-600 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Logout', 'bka2021' ); ?>">
-									<span class="dashicons dashicons-migrate"></span> Logout</a>
-									<a href="<?php echo get_page_link( get_page_by_title( 'ind member' )->ID ); ?>" class="mx-auto md:mx-4 my-3 md:my-2 text-black<?php echo ( is_user_logged_in() ? ' ' : ' hidden' ); ?>"><span class="text-2xl dashicons dashicons-universal-access-alt hover:text-blue-700 hover:no-underline" alt="member profile" title="member profile"></span>
-									</a>
-									<a href="<?php echo get_page_link( get_page_by_title( 'member options' )->ID ); ?>" class="py-1 md:py-2 px-2 md:px-3 bg-orange-600 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Options', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-settings"></span> Options</a>
-								<?php
-							} else {
-								?>
-								<a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-orange-600 to-red-500 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
-								<?php
-							}
 							?>
+							<a href="<?php echo esc_url( $membership_login_url ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-orange-600 to-red-500 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
 						</div>
 					</div>
 

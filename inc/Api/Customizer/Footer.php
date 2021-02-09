@@ -35,7 +35,7 @@ class Footer
 		] );
 
 		$wp_customize->add_setting( 'bka2021_footer_copy_text' , [
-			'default' => 'Proudly powered by AWPS',
+			'default' => '&copy; 2015-2021 British Kendo Association',
 			'transport' => 'postMessage', // or refresh if you want the entire page to reload
 		] );
 
