@@ -48,10 +48,10 @@ mix.setPublicPath( './assets/dist' );
 mix.js( 'assets/src/scripts/app.js', 'assets/dist/js' )
 	// .js( 'assets/src/scripts/admin.js', 'assets/dist/js' )
 	// .js( 'assets/src/scripts/dojomap.js', 'assets/dist/js' )
-	.js( 'assets/src/scripts/front.js', 'assets/dist/js' )
+	// .js( 'assets/src/scripts/front.js', 'assets/dist/js' )
 	// .js( 'assets/src/scripts/geo.js', 'assets/dist/js' )
 	// .js( 'assets/src/scripts/geosm.js', 'assets/dist/js' )
-	.js( 'assets/src/scripts/xl.js', 'assets/dist/js' )
+	// .js( 'assets/src/scripts/xl.js', 'assets/dist/js' )
 
 	// .react( 'assets/src/scripts/gutenberg.js', 'assets/dist/js' )
 	.sass( 'assets/src/sass/style.scss', 'assets/dist/css' )

@@ -1,11 +1,11 @@
 <?php
-if (!isset($_SESSION['dojoregion'])) {
-  $_SESSION['dojoregion'] = 0;
-  $_SESSION['dojokendo'] = 0;
-  $_SESSION['dojoiaido'] = 0;
-  $_SESSION['dojojodo'] = 0;
-  $_SESSION['dojofilter'] = '';
-}
+// if (!isset($_SESSION['dojoregion'])) {
+//   $_SESSION['dojoregion'] = 0;
+//   $_SESSION['dojokendo'] = 0;
+//   $_SESSION['dojoiaido'] = 0;
+//   $_SESSION['dojojodo'] = 0;
+//   $_SESSION['dojofilter'] = '';
+// }
 
 $option = get_option( 'bka2019ds_plugin' );
 
