@@ -31,57 +31,8 @@
  */
 @import "components/butons";
 
-.upshadow {
-  box-shadow: 0 -4px 8px 0 rgba(0,0,0,0.2);
-            // 0 -2px 4px 0 rgba(0,0,0,0.1);
-}
 
-.mylogin {
-  @apply  .mx-auto .border .border-purple-500 .py-4 .px-6 .max-w-sm .mt-4 ;
-  // max-width: 80%;
-  form {
-    @apply .flex .flex-col ;
-    p {
-    }
-  }
-}
-
-.login-username, .login-password {
-  @apply  .flex .flex-row ;
-  label {
-    @apply .w-1/2 .pr-6 .text-right ;
-  }
-  input {
-    @apply .w-1/2 .flex .justify-end ;
-  }
-}
-.login-remember {
-  @apply  .flex .flex-row .justify-end ;
-  label {
-    @apply .text-center  ;
-    @apply .w-1/2 ;
-  }
-  // @apply .w-4/5 ;
-  input {
-    @apply .mx-4  ;
-  }
-}
-.login-submit {
-  margin-left: 50%;
-  @apply  .flex .flex-row .justify-center ;
-  input {
-    @apply .text-center .px-6 .py-4 ;
-  }
-}
-
-
-    // background-color: pink ;
-    // background-image: url('BKA_logo3.png');
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
-    // background-position: center;
-
-
+// some styles to mathch WordPress
 
 figure {
   @apply .block ;
@@ -322,18 +273,8 @@ a {
   margin-right: auto ;
 }
 
-/** happy form
-  **/
-.happyforms-form {
-  // background-color: yellow;
-  @apply .border-2 .border-gray-600 .rounded .bg-gray-400 ;
-}
-.happyforms-form__title {
-  @apply .bg-gray-500 .py-4 ;
-}
-.happyforms-flex {
-  // @apply .bg-grey-light .px-2 ;
-}
+
+
 // footer section
 .inner {
   ul{
