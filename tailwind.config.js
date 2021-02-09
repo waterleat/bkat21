@@ -11,7 +11,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			body: [ 'Lucida Sans Unicode', 'Lucida Grande', 'Garuda', 'sans-serif' ],
-			display: [ 'Prompt' ]
+			display: [ 'Prompt', 'sans-serif' ]
 		},
 		screens: {
 			xs: '512px',

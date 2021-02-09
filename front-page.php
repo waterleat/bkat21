@@ -12,22 +12,22 @@ $option = get_option( 'bka2019ds_plugin' );
 get_header();
 
 $post_id = get_the_id();
-// $stype = get_post_meta($post_id, '__slideshow_type', true);
-$scategory = get_post_meta($post_id, '_slideshow_category', true);
-$number = get_post_meta($post_id, '_slideshow_number', true);
-
-// if ($type == 'slideshow' ){
-//   if($stype == 'revslider'){
-    if(function_exists('putRevSlider')){
-      $rev_id = get_post_meta($post_id, '_slideshow_rev', true);
-      ob_start();
-      putRevSlider($rev_id);
-      $content = ob_get_clean();
-
-      echo '<div id="feature" class="revslider with_shadow">'.$content.'</div>';
-    }
+// // $stype = get_post_meta($post_id, '__slideshow_type', true);
+// $scategory = get_post_meta($post_id, '_slideshow_category', true);
+// $number = get_post_meta($post_id, '_slideshow_number', true);
+//
+// // if ($type == 'slideshow' ){
+// //   if($stype == 'revslider'){
+//     if(function_exists('putRevSlider')){
+//       $rev_id = get_post_meta($post_id, '_slideshow_rev', true);
+//       ob_start();
+//       putRevSlider($rev_id);
+//       $content = ob_get_clean();
+//
+//       echo '<div id="feature" class="revslider with_shadow">'.$content.'</div>';
+//     }
 ?>
-
+<?php putRevSlider( 'front21' ); ?>
 <div class="flex flex-col md:flex-row p-4 bg-white">
 
   <div id="primary" class="content-area w-full md:w-2/3 p-4">
