@@ -1,7 +1,7 @@
-# ![Bka2021](http://www.alecaddd.com/wp-content/uploads/2017/05/Bka2018-logo.png)
+# ![Bka2021](http://www.britishkendoassociation.com/wp-content/uploads/2015/01/BKA_logo3.png)
 > A Modern WordPress Starter Theme for savvy Developers
 
-[![Build Status](https://travis-ci.org/waterleat/bkat21.svg?branch=master)](https://travis-ci.org/waterleat/bkat21) ![Dependecies](https://david-dm.org/waterleat/bkat21.svg) ![NPM latest](https://img.shields.io/npm/v/npm.svg) ![GPL License](https://img.shields.io/badge/license-GPLv3-blue.svg) [![Code Climate](https://codeclimate.com/github/waterleat/bkat21/badges/gpa.svg)](https://codeclimate.com/github/waterleat/bkat21)
+[![Build Status](https://travis-ci.org/waterleat/bkat21.svg?branch=master)](https://travis-ci.org/waterleat/bkat21) ![Dependecies](https://david-dm.org/waterleat/bkat21.svg) ![NPM latest](https://img.shields.io/npm/v/npm.svg) ![GPL License](https://img.shields.io/badge/license-GPLv3-blue.svg)
 
 ## Prerequisites
 
