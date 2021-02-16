@@ -29,11 +29,12 @@ module.exports = {
 				rblue: '#00e',
 				redFF: '#f00',
 				grey055: 'rgba(55,55,55,1)',
-				grey127: 'rgb(127,127,127)',
+				grey119: 'rgb(119,119,119)',
 				grey222: 'rgb(222,222,222)',
 				redish: 'rgb(167,22,22)',
 				ltblue: '#3cabce',
 				blueish: 'rgb(67,69,139)',
+				bluetwo: 'rgb(160,162,218)',
 				dkblue: 'rgb(29,27,93);'
 			},
 			spacing: {

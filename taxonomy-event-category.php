@@ -22,7 +22,7 @@ get_header();
 
 <!-- Page header, display category title -->
 <header class="page-header min-h-20">
-	<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 pt-4 page-title">
+	<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 page-title">
 		<?php printf( __( 'Event Category: %s', 'eventorganiser' ), '<span>' . single_cat_title( '', false ) . '</span>' ); ?>
 	</h1>
 

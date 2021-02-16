@@ -18,8 +18,8 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="http://schema.org/Event">
-  <div class="flex flex-col xs:flex-row md:flex-col lg:flex-row pt-4 lg:px-8">
-  	<div class="xs:w-2/3 sm:W-3/4 md:w-full lg:w-2/3">
+  <div class="flex flex-col xs:flex-row pt-4 lg:px-8">
+  	<div class="xs:w-2/3 sm:W-3/4 md:w-2/3">
 			<header class="eo-event-header entry-header">
 
 				<h2 class="text-2xl font-bold eo-event-title entry-title">
@@ -54,7 +54,7 @@
 
 			<!-- <div style="clear:both;"></div> -->
 		</div>
-		<div class="xs:w-1/3 sm:w-1/4 md:w-full lg:w-1/3 flex xs:flex-col md:flex-row lg:flex-col justify-around items-center text-center">
+		<div class="xs:w-1/3 sm:w-1/4 md:w-1/3 flex xs:flex-col justify-around items-center text-center">
 
 			<a href="<?php echo esc_url( 'https://membership.britishkendoassociation.com/html/book_events.php' ) ?>" class="btn btn-blue" >Book Now</a>
 			<a  class="btn btn-blue" href="<?php echo eo_get_permalink(); ?>" itemprop="url">Event Details</a>

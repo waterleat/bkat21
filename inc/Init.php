@@ -27,7 +27,7 @@ final class Init
 			Custom\Custom::class,
 			Custom\Admin::class,
 			Custom\Extras::class,
-			Custom\Shortcodes::class,
+			// Custom\Shortcodes::class,
 			// Custom\Review::class,
 			Api\Customizer::class,
 			Api\Gutenberg::class,

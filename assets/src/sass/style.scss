@@ -125,6 +125,12 @@ main {
   h4 {
     @apply .text-blueish ;
   }
+	h5 {
+		@apply .text-base .text-grey119 .mt-4 ;
+		@media only screen and (min-width: 768px) {
+			@apply .text-xl ;
+		}
+	}
 }
 
 ol, ul {
@@ -145,9 +151,10 @@ ul {
 a {
   // tailwind 1.0 has no underline by default
   // @apply .no-underline ;
-  @apply .text-rblue ;
+  @apply .text-blueish ;
   &:hover{
     @apply .underline ;
+		@apply .text-bluetwo ;
   }
   &:visited{
     // @apply .text-blue-royal ;
