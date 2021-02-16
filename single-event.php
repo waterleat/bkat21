@@ -31,7 +31,7 @@ get_header(); ?>
 
 	<header class="entry-header min-h-20">
 		<!-- Display event title -->
-		<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 pt-4 page-title"><?php the_title(); ?></h1>
+		<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 page-title"><?php the_title(); ?></h1>
 	</header><!-- .entry-header -->
 
 	<div class="flex flex-col md:flex-row bg-white">

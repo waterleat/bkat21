@@ -23,7 +23,7 @@ get_header(); ?>
 
 <!-- Page header-->
 <header class="page-header min-h-20">
-	<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal py-2 pl-2 xs:pl-8 page-title">
+	<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 page-title">
 		<?php
 		if ( eo_is_event_archive( 'day' ) ) {
 			// Viewing date archive.

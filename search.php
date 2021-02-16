@@ -10,7 +10,7 @@
 get_header(); ?>
 
 <header  class=" entry-header h-20 align-stretch" >
-	<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal py-2 pl-2 xs:pl-8 page-title">Search Results</h1>
+	<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 ">Search Results</h1>
 
 </header>
 

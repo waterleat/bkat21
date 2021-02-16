@@ -11,7 +11,7 @@ get_header(); ?>
 
 	<header  class=" entry-header h-20 align-stretch" >
 		<?php
-		the_archive_title( '<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal py-2 pl-2 xs:pl-8 page-title">', '</h1>' );
+		the_archive_title( '<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 page-title">', '</h1>' );
 		?>
 	</header>
 

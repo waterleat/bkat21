@@ -33,7 +33,7 @@ while ( have_posts() ) :
 		<?php
 	}
 
-	the_title( '<h1 class="m-0 text-white text-2xl ys:text-3xl xs:text-4xl font-normal py-2 pl-2 xs:pl-8 entry-title">', '</h1>' );
+	the_title( '<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 entry-title">', '</h1>' );
 	?>
 	</header><!-- .entry-header -->
 
