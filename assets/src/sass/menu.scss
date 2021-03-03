@@ -1,8 +1,65 @@
+// li padding for menu from higher position
+
+.li-px-2 li{
+	@apply px-2 ;
+}
+
+.li-py-2 li{
+	@apply py-2 ;
+}
+
+@responsive{
+  .li-px-3 li{
+    @apply px-3 ;
+  }
+}
+
+
+
 // The dropdown wrapper (`<div>`)
 .dropup,
 .dropdown {
   position: relative;
 }
+
+// The dropdown menu
+.dropdown-menu {
+	// @apply relative  ;
+	position: absolute;
+	// top: 100%;
+	// right: 0;
+	z-index: 300; // $zindex-dropdown;
+	// display: none; // none by default, but block on "open" of the menu
+	// float: right;
+	min-width: 10rem; // $dropdown-min-width;
+	// padding: .5rem; // $dropdown-padding-y 0;
+	margin: 0; // line below adds space between menu and dropdown
+	// margin: .125rem 0 0; // $dropdown-spacer 0 0; // override default ul
+	font-size: 1rem; // $font-size-base; // Redeclare because nesting can cause inheritance issues
+	color: black; // $body-color;
+	text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+	list-style: none;
+	// background-color: #fff; // $dropdown-bg;
+	// @apply bg-purple-lightest ;
+	background-clip: padding-box;
+	// border: $dropdown-border-width solid $dropdown-border-color;
+	border: 1px solid rgba(black, .15);
+	// @include border-radius($dropdown-border-radius);
+	@apply rounded ; // border-radius: .25rem;
+	// @include box-shadow($dropdown-box-shadow);
+	box-shadow: 0 .5rem 1rem rgba(black, .175);
+}
+
+.dropdown-menu.show {
+  // display: block;
+  @apply block ;
+}
+
+ul .dropdown-menu .sub-menu {
+  margin-left: 100px;
+  margin-top: -25px;
+}
+
 
 .dropdown-toggle {
   // Generate the caret automatically
@@ -19,34 +76,6 @@
     border-bottom: 0;
     border-left: .3em solid transparent;
   }
-}
-
-// The dropdown menu
-.dropdown-menu {
-  // @apply .relative  ;
-  position: absolute;
-  // top: 100%;
-  // right: 0;
-  z-index: 300; // $zindex-dropdown;
-  // display: none; // none by default, but block on "open" of the menu
-  // float: right;
-  min-width: 10rem; // $dropdown-min-width;
-  // padding: .5rem; // $dropdown-padding-y 0;
-  margin: 0; // line below adds space between menu and dropdown
-  // margin: .125rem 0 0; // $dropdown-spacer 0 0; // override default ul
-  font-size: 1rem; // $font-size-base; // Redeclare because nesting can cause inheritance issues
-  color: black; // $body-color;
-  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-  list-style: none;
-  // background-color: #fff; // $dropdown-bg;
-  // @apply .bg-purple-lightest ;
-  background-clip: padding-box;
-  // border: $dropdown-border-width solid $dropdown-border-color;
-  border: 1px solid rgba(black, .15);
-  // @include border-radius($dropdown-border-radius);
-  @apply .rounded ; // border-radius: .25rem;
-  // @include box-shadow($dropdown-box-shadow);
-  box-shadow: 0 .5rem 1rem rgba(black, .175);
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
@@ -76,7 +105,6 @@
   border: 0; // For `<button>`s
 
 
-
   &.active,
   &:active {
     // color: $dropdown-link-active-color;
@@ -95,68 +123,54 @@
   // }
 }
 
-.dropdown-menu.show {
-  // display: block;
-  @apply .block ;
-}
-
 // Dropdown section headers
 .dropdown-header {
   // display: block;
-  @apply .block ;
+  @apply block ;
   // padding: $dropdown-padding-y $dropdown-item-padding-x;
   // margin-bottom: 0; // for use with heading elements
   // font-size: $font-size-sm;
   // color: $dropdown-header-color;
   // white-space: nowrap; // as with > li > a
-  @apply .whitespace-no-wrap ;
+  @apply whitespace-nowrap ;
 }
 
 .nav-toggle {
-  @apply .hidden ;
-}
-
-ul .dropdown-menu .sub-menu {
-  margin-left: 100px;
-  margin-top: -25px;
+  @apply hidden ;
 }
 
 
-
-
-// Modified June 2019 to emulate Striking_r
-// May 2019 removed prior to tailwind 1.0
 
 #site-navigation{
   position: relative;
   z-index: 20;
-
 }
+
 ul#primary-menu {
-  // @apply .text-sm  ; // li-px-2 li-py-2  md:flex md:justify-end
-  @apply .inline-flex ;
+  // @apply text-sm  ; // li-px-2 li-py-2  md:flex md:justify-end
+  @apply inline-flex ;
   // position: relative;
-  @apply .list-none .p-0 ;
+  @apply list-none p-0 ;
 
   li.menu-item-has-children {
     ul.dropdown-menu {
-      @apply .hidden  .p-0 ;
+      @apply hidden  p-0 ;
       // position: relative;
 
       // left: -20px;
-      @apply .whitespace-no-wrap  ;
+      @apply whitespace-nowrap  ;
     }
   }
 
   li.menu-item-has-children{
     &:hover {
       ul.dropdown-menu {
-        @apply .absolute ;
+        @apply absolute ;
         // left: 0;
         // top: 100%;
-        @apply .block   ;
+        @apply block   ;
         // position: absolute; top: 100; left: 500;
-        @apply .bg-gray-100 .border .rounded .border-gray-200 ;
+        @apply bg-gray-100 border rounded border-gray-200 ;
         // background-color: #fff; // $dropdown-bg;
       }
     }
@@ -165,9 +179,9 @@ ul#primary-menu {
     ul.dropdown-menu {
       li.menu-item-has-children{
         ul.dropdown-menu {
-          @apply .hidden .relative ;
+          @apply hidden relative ;
           // left: -9999px;
-          @apply .whitespace-no-wrap ;
+          @apply whitespace-nowrap ;
         }
       }
     }
@@ -177,10 +191,10 @@ ul#primary-menu {
       li.menu-item-has-children{
         &:hover {
           ul.dropdown-menu {
-            @apply .absolute  ;
+            @apply absolute  ;
             // top: 100%;
-            @apply .block  ;
-            @apply .bg-gray-100 .border .rounded .border-gray-200 ;
+            @apply block  ;
+            @apply bg-gray-100 border rounded border-gray-200 ;
             // background-color: #fff; // $dropdown-bg;
           }
         }
@@ -190,14 +204,14 @@ ul#primary-menu {
 
   li {
     a {
-      @apply .text-xs .text-gray-700 ;
+      @apply text-xs text-gray-700 ;
       &:hover {
-        @apply .no-underline ;
+        @apply no-underline ;
       }
     }
 
     ul li:hover {
-      @apply .bg-gray-200 ;
+      @apply bg-gray-200 ;
     }
   }
 
@@ -207,9 +221,9 @@ ul#primary-menu {
 
 #paged_nav {
   .page-numbers {
-    @apply .mr-2 ;
+    @apply mr-2 ;
     &.current {
-      @apply .text-xl ;
+      @apply text-xl ;
     }
   }
 }
@@ -231,6 +245,8 @@ ul#primary-menu {
   }
 }
 
+
+// not used
 .nav2select {
     display: none;
     margin-right: 15px

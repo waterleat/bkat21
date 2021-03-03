@@ -1,21 +1,21 @@
 @responsive {
   .btn {
-    @apply .font-bold .py-2 .px-4 .rounded-full .text-center .cursor-pointer ;
+    @apply font-bold py-2 px-4 rounded-full text-center cursor-pointer ;
   }
   .btn-small {
-    @apply .font-bold .py-1 .px-2 .rounded-full .text-center .cursor-pointer ;
+    @apply font-bold py-1 px-2 rounded-full text-center cursor-pointer ;
   }
 }
 
 @screen md {
   .btn {
-    @apply .ml-0 ;
+    @apply ml-0 ;
   }
 
 }
 
 .btn-blue {
-  @apply .bg-blue-600 .text-white ;
+  @apply bg-blue-600 text-white ;
   // a{
   //   &,
   //   &:visited {
@@ -25,13 +25,13 @@
 
 }
 .btn-blue:hover {
-  @apply .bg-blue-800 ;
+  @apply bg-blue-800 ;
 }
 
 .btn-gray {
-  @apply .bg-gray-300 .text-black border border-blue-500;
+  @apply bg-gray-300 text-black border border-blue-500;
   &:hover {
-    @apply .bg-gray-500 border border-gray-600
+    @apply bg-gray-500 border border-gray-600
   }
 }
 

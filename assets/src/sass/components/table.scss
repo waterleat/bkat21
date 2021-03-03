@@ -1,0 +1,20 @@
+.grey-table  {
+  table, th, td {
+    @apply border border-grey055 ;
+  }
+}
+
+.thead-tr-th-p-2 thead{
+  tr{
+    th{
+      @apply p-2 ;
+    }
+  }
+}
+.tbody-tr-td-p-2 tbody{
+  tr{
+    td{
+      @apply p-2 ;
+    }
+  }
+}

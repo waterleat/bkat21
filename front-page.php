@@ -28,10 +28,10 @@ $post_id = get_the_id();
 //     }
 ?>
 <?php putRevSlider( 'front21' ); ?>
-<div class="flex flex-col md:flex-row p-4 bg-white">
+<div class="flex flex-col md:flex-row p-4 bg-white dark:bg-gray-700 dark:text-gray-200">
 
   <div id="primary" class="content-area w-full md:w-2/3 p-4">
-    <main id="main" class="site-main" role="main">
+    <main id="main" class="site-main dark:bg-gray-800 dark:text-gray-200" role="main">
       <div class="front-page border-b-2 border-dkblue pb-6 mb-8">
         <?php
         /* Start the Loop */

@@ -1,13 +1,14 @@
 module.exports = {
-	purge: [
-		'./*.php',
-		'./inc/**/*.php',
-		'./membership/**/*.php',
-		'./page-templates/**/*.php',
-		'./views/**/*.php',
-		'./assets/src/**/*.scss',
-		'./assets/src/**/*.js'
-	],
+	darkMode: 'media',
+	purge: {
+		preserveHtmlElements: false,
+		content: [
+			'./*.php',
+			'./inc/**/*.php',
+			'./page-templates/**/*.php',
+			'./views/**/*.php',
+			'./assets/src/**/*.js'
+		]},
 	theme: {
 		fontFamily: {
 			body: [ 'Lucida Sans Unicode', 'Lucida Grande', 'Garuda', 'sans-serif' ],
@@ -21,8 +22,6 @@ module.exports = {
 			lg: '1024px',
 			xl: '1280px',
 
-			yl: '1680px',
-			zl: '1980px'
 		},
 		extend: {
 			colors: {
@@ -35,7 +34,7 @@ module.exports = {
 				ltblue: '#3cabce',
 				blueish: 'rgb(67,69,139)',
 				bluetwo: 'rgb(160,162,218)',
-				dkblue: 'rgb(29,27,93);'
+				dkblue: 'rgb(29,27,93)'
 			},
 			spacing: {
 				'80': '20rem',

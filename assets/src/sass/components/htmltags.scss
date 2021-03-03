@@ -1,0 +1,44 @@
+// html tags to make WordPress show correctly
+@layer base {
+	p {
+	  @apply py-2 ;
+	}
+	h1 {
+	  @apply text-4xl font-bold my-2 ;
+	}
+	h2 {
+	  @apply text-2xl font-bold my-3 ;
+	}
+	h3 {
+	  @apply text-xl font-bold my-4 ;
+	}
+	h4 {
+	  @apply text-lg font-bold my-5 ;
+	}
+}
+
+a {
+	// @apply .no-underline ;
+	@apply text-blueish ;
+	&:hover{
+		@apply underline text-bluetwo ;
+	}
+	&:visited{
+		// @apply .text-blue-royal ;
+	}
+}
+
+ol, ul {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+ol {
+  list-style-type: decimal;
+}
+ul {
+  list-style-type: disc;
+}

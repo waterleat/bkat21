@@ -31,217 +31,52 @@
  */
 @import "components/butons";
 
-
-// some styles to mathch WordPress
-
-figure {
-  @apply .block ;
-}
-.alignleft {
-	display: inline;
-	float: left;
-	margin-right: 1.5em;
-}
-
-.alignright {
-	display: inline;
-	float: right;
-	margin-left: 1.5em;
-}
-
-.aligncenter {
-	clear: both;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-/* Make sure embeds and iframes fit their containers. */
-
-embed,
-iframe,
-object {
-	margin-bottom: 1.5em;
-	max-width: 100%;
-}
-
-/* Remove bottom on embeds that wrapped in paragraphs via wpautop. */
-
-p > embed:only-child,
-p > iframe:only-child,
-p > object:only-child {
-	margin-bottom: 0;
-}
-
-.wp-caption,
-.gallery-caption {
-	color: #666;
-	font-size: 13px;
-	font-size: 0.8125rem;
-	font-style: italic;
-	margin-bottom: 1.5em;
-	max-width: 100%;
-}
-
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
-}
+@import "components/wordpress.scss";
 
 @import "components/gallery.scss" ;
 
+@import "components/htmltags.scss";
 
-// html tags to make WordPress show correctly
-p {
-  @apply .py-2 ;
-}
-h1 {
-  @apply .text-4xl .font-bold .my-2 ;
-}
-h2 {
-  @apply .text-2xl .font-bold .my-3 ;
-}
-h3 {
-  @apply .text-xl .font-bold .my-4 ;
-}
-h4 {
-  @apply .text-lg .font-bold .my-5 ;
+@import "menu";
+
+@import "components/table.scss";
+
+.post-thumbnail {
+	img{
+		width: 100% ;
+		height: auto ;
+		@apply pt-4 ;
+	}
 }
 
-.front-page {
-  h2 {
-    @apply .text-3xl .text-blueish .font-normal ;
-  }
-}
+
+// to fit striking_r styles
 main {
-  // margin-top: -8px;
-  // // @apply .-mt-2 ;
-  // margin-bottom: -20px;
-  // // @apply .-mb-4 ;
-  h4 {
-    @apply .text-blueish ;
-  }
+	h4 {
+		@apply text-blueish ;
+	}
 	h5 {
-		@apply .text-base .text-grey119 .mt-4 ;
+		@apply text-base text-grey119 mt-4 ;
 		@media only screen and (min-width: 768px) {
-			@apply .text-xl ;
+			@apply text-xl ;
 		}
 	}
 }
 
-ol, ul {
-  display: block;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 40px;
-}
-ol {
-  list-style-type: decimal;
-}
-ul {
-  list-style-type: disc;
-}
-
-a {
-  // tailwind 1.0 has no underline by default
-  // @apply .no-underline ;
-  @apply .text-blueish ;
-  &:hover{
-    @apply .underline ;
-		@apply .text-bluetwo ;
-  }
-  &:visited{
-    // @apply .text-blue-royal ;
-  }
-}
-
-
-@import "menu";
-
-.li-mx-4 li{
-  @apply .mx-4 ;
-}
-
-@responsive{
-  .li-px-2 li{
-    @apply .px-2 ;
-  }
-  .li-px-3 li{
-    @apply .px-3 ;
-  }
-  .li-px-4 li{
-    @apply .px-4 ;
-  }
-  .li-py-1 li{
-    @apply .py-1 ;
-  }
-  .li-py-2 li{
-    @apply .py-2 ;
-  }
-  .li-pl-4 li{
-      @apply .pl-4 ;
-  }
-  .li-pb-0 li{
-      @apply .pb-0 ;
-  }
-  .li-pb-4 li{
-      @apply .pb-4 ;
-  }
-}
-
-.grey-table  {
-  table, th, td {
-    @apply .border .border-grey055 ;
-  }
-}
-
-.thead-tr-th-p-2 thead{
-  tr{
-    th{
-      @apply .p-2 ;
-    }
-  }
-}
-.tbody-tr-td-p-2 tbody{
-  tr{
-    td{
-      @apply .p-2 ;
-    }
-  }
-}
 
 
 // Event organiser classes
 // widget area in sidebar
 .eo-widget-cal-wrap table {
   width: 90%;
-  @apply .mx-auto ;
+  @apply mx-auto ;
 }
-.post-thumbnail {
-  img{
-    width: 100% ;
-    height: auto ;
-    @apply .pt-4 ;
-  }
-}
-
 #eo-event-categories-2, #eo_event_list_widget-3 {
   ul {
-    @apply .list-none .pl-6 ;
+    @apply list-none pl-6 ;
   }
 }
 
-// May 2019 removed prior to tailwind 1.0
-
-// .-mt-50p{
-//   margin-top: -50px;
-// }
 
 
 
@@ -268,52 +103,46 @@ a {
  */
  @import "accessibility";
 
-.wp-block-image.is-resized{
-  width: fit-content;
-}
-.wp-block-image .align-right img{
-  // @apply .float-right ;
-  margin-left: auto ;
-}
-.wp-block-image .align-left img{
-  // @apply .float-right ;
-  margin-right: auto ;
-}
-
-
 
 // footer section
 .inner {
   ul{
-    @apply .pl-3 .list-none;
+    @apply pl-3 list-none;
     li {
-      @apply .text-sm .py-1 ;
+      @apply text-sm py-1 ;
       a {
-        @apply .text-gray-800 ;
+        @apply text-gray-800 ;
       }
       a:hover {
-        @apply .text-blue-400 .no-underline ;
+        @apply text-blue-400 no-underline ;
       }
     }
   }
   select {
-    @apply .ml-3 .p-1 .bg-white .border .border-gray-600 .rounded .cursor-pointer ;
+    @apply ml-3 p-1 bg-white border border-gray-600 rounded cursor-pointer ;
   }
 }
 
 .search-form {
-  @apply .flex ;
+  @apply flex ;
 }
 .search-field {
-  @apply .p-1 .border .border-gray-400 ;
+  @apply p-1 border border-gray-400 ;
   &:focus {
-    @apply .border-purple-500 ;
+    @apply border-purple-500 ;
   }
 }
 
 .search-submit {
-  @apply .ml-2 .px-2 .py-1 .cursor-pointer .border .rounded .bg-gray-400 ;
+  @apply ml-2 px-2 py-1 cursor-pointer border rounded bg-gray-400 ;
   &:hover {
-    @apply .bg-gray-700 .text-white ;
+    @apply bg-gray-700 text-white ;
+  }
+}
+
+
+.front-page {
+  h2 {
+    @apply text-3xl text-blueish font-normal ;
   }
 }
