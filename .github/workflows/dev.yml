@@ -17,5 +17,5 @@ jobs:
         server: home472684590.1and1-data.host
         username: ${{ secrets.ftp_username}}
         password: ${{ secrets.ftp_password }}
-        server-dir: test/wp-content/themes/
+        server-dir: /test/wp-content/themes/
         port: 22
