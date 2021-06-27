@@ -38,7 +38,8 @@ class Enqueue
 	 */
 	public function enqueue_scripts()
 	{
-		$google_map_api = 'AIzaSyDXwSOa64GQfK5_EaP9mslaQCyR6haJJsY';
+		// $google_map_api = 'AIzaSyDXwSOa64GQfK5_EaP9mslaQCyR6haJJsY';
+		
 		// Deregister the built-in version of jQuery from WordPress
 		// this is original code
 		// if ( ! is_customize_preview() ) {

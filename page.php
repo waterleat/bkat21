@@ -35,13 +35,11 @@ while ( have_posts() ) :
 
 	the_title( '<h1 class="m-0 text-white text-3xl xs:text-4xl font-normal pl-2 xs:pl-8 py-1 entry-title">', '</h1>' );
 	?>
-	</header><!-- .entry-header -->
+	</header>
 
 	<div class=" bg-white">
-	<!-- <div class="flex flex-col md:flex-row bg-white"> -->
 
 		<div id="primary" class="content-area w-full p-6">
-		<!-- <div id="primary" class="content-area w-full md:w-2/3"> -->
 			<main id="main" class="site-main" role="main">
 
 			<?php
@@ -55,15 +53,12 @@ while ( have_posts() ) :
 			);
 			?>
 
-			</main><!-- #main -->
-		</div><!-- #primary -->
+			</main>
+		</div>
 
-		<!-- <div class="w-full md:w-1/3 px-2 pt-8 md:mt-20  bg-white">
-			<?php // get_sidebar(); ?>
-		</div> -->
-
-	</div><!-- .row -->
+	</div>
 
 	<?php
 endwhile;
+
 get_footer();

@@ -10,10 +10,11 @@
 get_header();
 ?>
 <div class="bg-white">
+	<p>This is the most up to date version of the map for dojo in the UK.</p>
+	<div id="ukmap" style="height: 500px;"></div>
     <p>If no map is shown then it is likely that your browser is not able to support the features used.
         Please use an alternative such as Chrome or Firefox.</p>
     <p>An external version of the map is <a href="https://www.google.com/maps/d/viewer?mid=1LG99133uLOoRgwNSaNwzhIuujxg&ll=53.84387622700738%2C-2.2350062000000435&z=5&fbclid=IwAR07uuXKL6wAUs1mEfnvK--4lj7p8sdwwKIfsfUYNVw9P43AokLSbjOOxeg">available</a>, but this may not contain up-to-date information</p>
-    <div id="ukmap" style="height: 500px;"></div>
     <?php
 
     /* Start the Loop */

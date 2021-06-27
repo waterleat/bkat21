@@ -39,7 +39,7 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 
 					<div class="relative logo mx-auto pt-6 md:pb-4 md:pt-0 md:pl-2  md:m-0 z-10">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<img src="<?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_logo.png" class="">
+							<img src="<?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_logo.png" alt="logo">
 						</a>
 					</div>
 					<div class="absolute inset-0  md:relative md:mx-auto ">
@@ -50,7 +50,7 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 						<div class="flex flex-col justify-around content-around md:flex-row md:w-80 h-full my-4 mr-2 md:mr-0">
 							<?php
 							?>
-							<a href="<?php echo esc_url( $membership_login_url ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-orange-600 to-red-500 border border-orange-600 rounded text-white text-center hover:bg-orange-700 hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
+							<a href="<?php echo esc_url( $membership_login_url ); ?>" class=" py-1 md:py-2 px-2 md:px-3 bg-gradient-to-r from-orange600 to-red-500 border border-orange600 rounded text-white text-center hover:from-red-500 hover:to-orange600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
 						</div>
 					</div>
 
