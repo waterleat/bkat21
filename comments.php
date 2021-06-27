@@ -20,7 +20,7 @@ if ( post_password_required() ) :
 endif;
 ?>
 
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area border-t-2 border-blue-500">
 
 	<?php
 	// You can start editing here -- including this comment!
@@ -82,7 +82,7 @@ endif;
 	// for all args see https://codex.wordpress.org/Function_Reference/comment_form
 	$args = array(
 		'comment_field' =>  '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) .
-		  '</label><textarea id="comment" name="comment" class="w-full" rows="8" aria-required="true">' .
+		  '</label><textarea id="comment" name="comment" class="w-full p-4 border-2 border-blue-500" rows="8" aria-required="true">' .
 		  '</textarea></p>',
 	);
 	comment_form($args);
