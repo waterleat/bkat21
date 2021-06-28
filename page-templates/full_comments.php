@@ -12,6 +12,11 @@
  * @package bka2021
  */
 
+ if ( ! is_user_logged_in() ) {
+ 	wp_redirect(esc_url(home_url('/')), 307);
+ }
+
+
 get_header();
 
 // Start the Loop.
