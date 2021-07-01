@@ -48,16 +48,13 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 
 					<div class="absolute top-0 right-0">
 						<div class="flex flex-col justify-around content-around md:flex-row md:w-80 h-full my-4 mr-2 md:mr-0">
-							<?php
-							?>
 							<a href="<?php echo esc_url( $membership_login_url ); ?>" class="mb-2 py-1 md:py-2 px-2 border border-yellow-600 rounded text-white text-center bg-gradient-to-r from-yellow-600 to-red-500 hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
 							<?php
-							if ( is_user_logged_in() ) {
-								?>
-								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM Discussion Area' ) ) ); ?>" class="mb-2 py-1 md:py-2 px-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-center hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class=""> 2021 AGM</span></a>
-								<?php
-							}
-							?>
+							if (is_user_logged_in() ) { ?>
+								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM Discussion Area' ) ) ); ?>" class="mb-2 py-1 md:py-2 px-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-center hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+							<?php } else { ?>
+								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM 2021' ) ) ); ?>" class="mb-2 py-1 md:py-2 px-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-center hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+							<?php } ?>
 						</div>
 					</div>
 
