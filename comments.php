@@ -18,6 +18,22 @@
 if ( post_password_required() ) :
 	return;
 endif;
+
+$showForm = FALSE;
+$bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
+// var_dump($bu);
+$slug = get_page_template_slug($post->ID);
+// var_dump($slug);
+$b = substr($slug, strpos($slug, '/') + 1,-strlen($slug)+strpos($slug, '_'));
+// var_dump($b);
+if ( ! array_key_exists($b, $bu) ) {
+	$showForm = TRUE;
+} else {
+	if ( $bu[$b] == "1" ) {
+	// if ($bu[$b] == "1" ) {
+		$showForm = TRUE;
+	}
+}
 ?>
 
 <div id="comments" class="comments-area border-t-2 border-blue-500">
@@ -25,7 +41,11 @@ endif;
 	<?php
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
+		if (! $showForm ) {
+			echo "<p class='bg-yellow-400 px-4'>You are not a member of the $b bu, so you are unable to add a comment</p>";
+		}
 	?>
+
 		<h2 class="text-2xl font-bold comments-title">
 			<?php
 				printf(
@@ -85,7 +105,10 @@ endif;
 		  '</label><textarea id="comment" name="comment" class="w-full p-4 border-2 border-blue-500" rows="8" aria-required="true">' .
 		  '</textarea></p>',
 	);
-	comment_form($args);
+
+	if ($showForm ) {
+		comment_form($args);
+	}
 	?>
 
 </div><!-- #comments -->

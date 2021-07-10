@@ -23,7 +23,7 @@ while ( have_posts() ) :
 	// show the page title on thumbnail immage or on background.
 	if ( has_post_thumbnail() ) {
 		?>
-		<header class=" entry-header h-20 align-stretch" style="background-image: url( <?php the_post_thumbnail_url(); ?> );
+		<header class=" entry-header min-h-20 align-stretch" style="background-image: url( <?php the_post_thumbnail_url(); ?> );
 		background-repeat: no-repeat; background-position: center center; background-size: 100% auto; background-attachment: scroll;
 		">
 			<?php

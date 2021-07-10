@@ -28,7 +28,6 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 	<?php wp_body_open(); ?>
 	<div id="page" class="site w-full md:container mx-auto text-grey055 font-body text-sm lg:text-base" <?php echo ! is_customize_preview() ? '' : 'style="padding: 0 40px;"'; ?>>
 		<header id="masthead" class="w-full bg-white" >
-			<!-- style="background-image: url( <?php // bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_text1.jpg ); background-repeat: no-repeat; background-position: center center; background-attachment: scroll; background-size: 100% auto;"> -->
 
 				<div id="headerblock" class="relative flex flex-col  md:flex-row h-auto px-3"  role="banner">
 					<?php
@@ -37,28 +36,31 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 					}
 					?>
 
+					<!-- logo & title -->
 					<div class="relative logo mx-auto pt-6 md:pb-4 md:pt-0 md:pl-2  md:m-0 z-10">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img src="<?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_logo.png" alt="logo">
 						</a>
 					</div>
 					<div class="absolute inset-0  md:relative md:mx-auto ">
-						<h3 class="font-display text-center md:text-left m-0 text-xl pt-32 md:pt-16 md:text-2xl lg:text-4xl text-indigo-900"><?php // bloginfo( 'title' ); ?>BRITISH KENDO ASSOCIATION</h3>
+						<h3 class="font-display text-center md:text-left m-0 text-xl pt-32 md:pt-16 md:text-2xl lg:text-4xl text-indigo-900">BRITISH KENDO ASSOCIATION</h3>
 					</div>
 
+					<!-- membership agm Logout buttons -->
 					<div class="absolute top-0 right-0">
-						<div class="flex flex-col justify-around content-around md:flex-row md:w-80 h-full my-4 mr-2 md:mr-0">
-							<a href="<?php echo esc_url( $membership_login_url ); ?>" class="mb-2 py-1 md:py-2 px-2 border border-yellow-600 rounded text-white text-center bg-gradient-to-r from-yellow-600 to-red-500 hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
+						<div class="flex flex-col justify-around content-around md:flex-row md:w-100 lg:w-128 mr-2 md:mr-0 md:py-2">
+							<a href="<?php echo esc_url( $membership_login_url ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 border border-yellow-600 rounded text-white text-center bg-gradient-to-r from-yellow-600 to-red-500 hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
 							<?php
-							if (is_user_logged_in() ) { ?>
-								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM Discussion Area' ) ) ); ?>" class="mb-2 py-1 md:py-2 px-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-center hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+							if (! is_user_logged_in() ) { ?>
+								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM 2021' ) ) ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
 							<?php } else { ?>
-								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM 2021' ) ) ); ?>" class="mb-2 py-1 md:py-2 px-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-center hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM Discussion Area' ) ) ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+								<a href="<?php echo esc_url( home_url('wp-login.php?action=logout') ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-exit"></span><span class=""> Logout</span></a>
 							<?php } ?>
 						</div>
 					</div>
 
-
+					<!-- menus -->
 					<div class="hidden md:block md:absolute md:bottom-0 md:right-0">
 						<nav id="site-navigation" class="flex-col justify-center " role="navigation">
 							<?php
@@ -69,17 +71,12 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 										'menu_id'        => 'primary-menu',
 										'walker'         => new Bka2021\Core\WalkerNav(),
 										'container'      => 'ul',
-										// 'menu_class'     => 'text-sm mr-3 lg:mr-6 my-2 li-px-2 lg:li-px-3 li-py-2 hidden md:flex md:justify-end',
 										'menu_class'     => 'text-sm mr-3 lg:mr-6 my-2 li-px-2 lg:li-px-3 li-py-2 flex md:justify-end',
-										// 'menu_class'     => ' text-lg hidden xs:flex li-px-2 li-py-2 sm:justify-end ',
 									)
 								);
 							}
 							?>
 						</nav>
-					</div>
-					<div class="sn">
-
 					</div>
 
 				</div>
