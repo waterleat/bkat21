@@ -22,30 +22,28 @@ get_header(); ?>
 			<main id="main" class="site-main" role="main">
 
 				<?php
-				if ( have_posts() ) :
+				if ( have_posts() ) {
 
-					if ( is_home() && ! is_front_page() ) : ?>
+					if ( is_home() && ! is_front_page() ) {
+						?>
 						<header>
 							<h1 class="text-4xl font-bold page-title"><?php single_post_title(); ?></h1>
 						</header>
-
-					<?php
-					endif;
+						<?php
+					};
 
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
-
+					while ( have_posts() ) {
+						the_post();
 						get_template_part( 'views/content', get_post_format() );
-
-					endwhile;
+					};
 
 					the_posts_navigation();
 
-				else :
-
+				} else {
 					get_template_part( 'views/content', 'none' );
-
-				endif; ?>
+				};
+				?>
 
 			</main><!-- #main -->
 		</div><!-- #primary -->

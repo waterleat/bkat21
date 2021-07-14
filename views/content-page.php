@@ -11,16 +11,16 @@
 	<?php
 	// $style = 'style="background-image: url(';
 	if ( has_post_thumbnail() ) {
-		echo '<header class=" entry-header h-20 align-stretch" style="background-image: url('
-		. the_post_thumbnail_url() . '); background-repeat: no-repeat; background-position: center center; background-size: 100% auto; background-attachment: scroll; ">';
+		echo '<header class=" entry-header min-h-20 align-stretch" style="background-image: url('
+			. the_post_thumbnail_url() . '); background-repeat: no-repeat; background-position: center center; background-size: cover; background-attachment: scroll; ">';
 	}else{
-		echo '<header class=" entry-header h-20 align-stretch" style="background-image: url(';
-		 bloginfo('template_directory') ;
-		 echo '/assets/dist/images/navy_blue.png ); background-repeat: repeat; background-attachment: scroll; ">';
+		echo '<header class=" entry-header min-h-20 align-stretch" style="background-image: url(';
+			bloginfo('template_directory') ;
+			echo '/assets/dist/images/navy_blue.png ); background-repeat: repeat; background-attachment: scroll; ">';
 	}
 	?>
 
-		<?php the_title( '<h1 class="text-white font-normal pl-8 entry-title pt-4">', '</h1>' ); ?>
+		<?php the_title( '<h1 class="text-white font-normal pl-8 entry-title py-4 mb-0">', '</h1>' ); ?>
 	</header>
 
 	<div class="container entry-content p-8 bg-white ">

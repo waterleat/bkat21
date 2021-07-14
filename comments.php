@@ -20,7 +20,7 @@ if ( post_password_required() ) :
 endif;
 
 $showForm = FALSE;
-$bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
+$bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
 // var_dump($bu);
 $slug = get_page_template_slug($post->ID);
 // var_dump($slug);

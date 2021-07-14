@@ -44,7 +44,16 @@ while ( have_posts() ) :
 					<div class="bg-gray-300 p-4">
 						<p class="text-center pt-0">Other Posts</p>
 						<?php
-						the_post_navigation();
+						// the_post_navigation();
+						$args = array(
+						    'prev_text' => sprintf( esc_html__( '%s Older - %s', 'wpdocs_blankslate' ), '<span class="meta-nav"> < </span>', '%title' ),
+						    'next_text' => sprintf( esc_html__( 'Newer %s - %s', 'wpdocs_blankslate' ), '<span class="meta-nav"> > </span>', '%title' )
+						);
+						$navigation = get_the_post_navigation( $args );
+						if ( $navigation ) :
+						    // echo '<h4>View More</h4>';
+						    echo $navigation;
+						endif;
 						?>
 					</div>
 					<?php

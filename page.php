@@ -24,7 +24,7 @@ while ( have_posts() ) :
 	if ( has_post_thumbnail() ) {
 		?>
 		<header class=" entry-header min-h-20 align-stretch" style="background-image: url( <?php the_post_thumbnail_url(); ?> );
-		background-repeat: no-repeat; background-position: center center; background-size: 100% auto; background-attachment: scroll;
+		background-repeat: no-repeat; background-position: center center; background-size: cover; background-attachment: scroll;
 		">
 			<?php
 	} else {
@@ -41,7 +41,6 @@ while ( have_posts() ) :
 
 		<div id="primary" class="content-area w-full p-6">
 			<main id="main" class="site-main" role="main">
-
 			<?php
 			the_content();
 
