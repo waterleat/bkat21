@@ -18,22 +18,67 @@
 if ( post_password_required() ) :
 	return;
 endif;
+// if ( get_post_type() == 'agmitem'){
+// 	$showForm = TRUE;
+// // } else {
+// // 	$showForm = FALSE;
+// // 	$bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
+// // 	// $bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
+// // 	// var_dump($bu);
+// // 	$slug = get_page_template_slug($post->ID);
+// // 	// var_dump($slug);
+// // 	$b = substr($slug, strpos($slug, '/') + 1,-strlen($slug)+strpos($slug, '_'));
+// // 	// var_dump($b);
+// // 	if ( ! array_key_exists($b, $bu) ) {
+// // 		$showForm = TRUE;
+// // 	} else {
+// // 		if ( $bu[$b] == "1" ) {
+// // 		// if ($bu[$b] == "1" ) {
+// // 			$showForm = TRUE;
+// // 		}
+// // 	}
+// };
 
-$showForm = FALSE;
-$bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
+$bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
+// $bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
+
+$bu = [
+	'kendo' => '0',
+	'iaido' => '1',
+	'jodo' => '1',
+];
 // var_dump($bu);
-$slug = get_page_template_slug($post->ID);
-// var_dump($slug);
-$b = substr($slug, strpos($slug, '/') + 1,-strlen($slug)+strpos($slug, '_'));
-// var_dump($b);
-if ( ! array_key_exists($b, $bu) ) {
+
+// Get a list of categories and extract their names
+$post_categories = get_the_terms( $post->ID, 'category' );
+if ( ! empty( $post_categories ) && ! is_wp_error( $post_categories ) ) {
+	$categories = wp_list_pluck( $post_categories, 'name' );
+}
+// var_dump($categories);
+// check bu membersip with cpt category
+if (in_array('BKA', $categories)) {
+	// echo "BKA";
 	$showForm = TRUE;
 } else {
-	if ( $bu[$b] == "1" ) {
-	// if ($bu[$b] == "1" ) {
-		$showForm = TRUE;
-	}
-}
+	$showForm = FALSE;
+	foreach ($bu as $key => $value) {
+		if (!$value) {
+			continue;
+		}
+		// echo "<br>key $key value $value <br>";
+		// var_dump(ucwords($key), $value);
+		if ( $value == '1'  ) {
+			// echo "one";
+			if ( in_array(ucwords($key), $categories,FALSE)) {
+				// echo "<br>$key in categories";
+				$showForm = TRUE;
+				// echo "break";
+				break;
+			}
+		};
+		// var_dump($showForm);
+	};
+};
 ?>
 
 <div id="comments" class="comments-area border-t-2 border-blue-500">
