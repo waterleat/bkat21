@@ -15,70 +15,43 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() ) :
-	return;
-endif;
-// if ( get_post_type() == 'agmitem'){
-// 	$showForm = TRUE;
-// // } else {
-// // 	$showForm = FALSE;
-// // 	$bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
-// // 	// $bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
-// // 	// var_dump($bu);
-// // 	$slug = get_page_template_slug($post->ID);
-// // 	// var_dump($slug);
-// // 	$b = substr($slug, strpos($slug, '/') + 1,-strlen($slug)+strpos($slug, '_'));
-// // 	// var_dump($b);
-// // 	if ( ! array_key_exists($b, $bu) ) {
-// // 		$showForm = TRUE;
-// // 	} else {
-// // 		if ( $bu[$b] == "1" ) {
-// // 		// if ($bu[$b] == "1" ) {
-// // 			$showForm = TRUE;
-// // 		}
-// // 	}
-// };
+if ( post_password_required() ) { return; };
 
 $bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
-// $bu = get_user_meta( get_current_user_ID(), 'arts', FALSE );
+$drc = get_user_meta( get_current_user_ID(), 'drc', TRUE );
 
-$bu = [
-	'kendo' => '0',
-	'iaido' => '1',
-	'jodo' => '1',
-];
-// var_dump($bu);
+$poll_id = get_post_meta( $post->ID, 'democracy_poll_id', true );
+$code_text = '[democracy id="' . $poll_id . '"]';
 
 // Get a list of categories and extract their names
 $post_categories = get_the_terms( $post->ID, 'category' );
 if ( ! empty( $post_categories ) && ! is_wp_error( $post_categories ) ) {
 	$categories = wp_list_pluck( $post_categories, 'name' );
 }
-// var_dump($categories);
+
 // check bu membersip with cpt category
 if (in_array('BKA', $categories)) {
-	// echo "BKA";
 	$showForm = TRUE;
 } else {
 	$showForm = FALSE;
 	foreach ($bu as $key => $value) {
-		if (!$value) {
-			continue;
-		}
-		// echo "<br>key $key value $value <br>";
-		// var_dump(ucwords($key), $value);
 		if ( $value == '1'  ) {
-			// echo "one";
+		// initial capital letter
+		// true if bu member
 			if ( in_array(ucwords($key), $categories,FALSE)) {
-				// echo "<br>$key in categories";
 				$showForm = TRUE;
-				// echo "break";
-				break;
-			}
+				if ( in_array('DRC', $categories,FALSE)) {
+					if (! $drc[$key] ) {
+						$showForm = FALSE;
+					};
+					break;
+				};
+			};
 		};
-		// var_dump($showForm);
 	};
 };
+
+// $showForm = AgmController::hasVotingRights();
 ?>
 
 <div id="comments" class="comments-area border-t-2 border-blue-500">
@@ -151,9 +124,23 @@ if (in_array('BKA', $categories)) {
 		  '</textarea></p>',
 	);
 
-	if ($showForm ) {
+	// admin can comment only bu/dojoreps can vote
+	if ($showForm || current_user_can('manage_options')) {
 		comment_form($args);
-	}
+	};
+	// if (in_array('DRC', $categories)) {
+	// }
+	// only bumembers/dojoreps can vote
+	if ($showForm) {
+		echo '<div class="p-4	">';
+		echo do_shortcode($code_text);
+		echo "</div>";
+	} else {
+		?>
+		<div class="p-4 bg-yellow-400">Only <?php echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu'; ?> can vote</div>
+		<!-- echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu';.' can vote</div>'; -->
+		<?php
+	};
 	?>
 
 </div><!-- #comments -->
