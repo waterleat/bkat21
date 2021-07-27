@@ -27,7 +27,7 @@ $code_text = '[democracy id="' . $poll_id . '"]';
 $post_categories = get_the_terms( $post->ID, 'category' );
 if ( ! empty( $post_categories ) && ! is_wp_error( $post_categories ) ) {
 	$categories = wp_list_pluck( $post_categories, 'name' );
-}
+};
 
 // check bu membersip with cpt category
 if (in_array('BKA', $categories)) {
