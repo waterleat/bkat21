@@ -20,9 +20,6 @@ if ( post_password_required() ) { return; };
 $bu = get_user_meta( get_current_user_ID(), 'arts', TRUE );
 $drc = get_user_meta( get_current_user_ID(), 'drc', TRUE );
 
-$poll_id = get_post_meta( $post->ID, 'democracy_poll_id', true );
-$code_text = '[democracy id="' . $poll_id . '"]';
-
 // Get a list of categories and extract their names
 $post_categories = get_the_terms( $post->ID, 'category' );
 if ( ! empty( $post_categories ) && ! is_wp_error( $post_categories ) ) {
@@ -131,16 +128,21 @@ if (in_array('BKA', $categories)) {
 	// if (in_array('DRC', $categories)) {
 	// }
 	// only bumembers/dojoreps can vote
-	if ($showForm) {
-		echo '<div class="p-4	">';
-		echo do_shortcode($code_text);
-		echo "</div>";
-	} else {
-		?>
-		<div class="p-4 bg-yellow-400">Only <?php echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu'; ?> can vote</div>
-		<!-- echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu';.' can vote</div>'; -->
-		<?php
-	};
+
+	if ($post->post_type == 'agmitem') {
+		$poll_id = get_post_meta( $post->ID, 'democracy_poll_id', true );
+		$code_text = '[democracy id="' . $poll_id . '"]';
+		if ($showForm ) {
+			echo '<div class="p-4	">';
+			echo do_shortcode($code_text);
+			echo "</div>";
+		} else {
+			?>
+			<div class="p-4 bg-yellow-400">Only <?php echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu'; ?> can vote</div>
+			<!-- echo (in_array('DRC', $categories)) ?'dojo reps' : 'members of the bu';.' can vote</div>'; -->
+			<?php
+		};
+	}
 	?>
 
 </div><!-- #comments -->
