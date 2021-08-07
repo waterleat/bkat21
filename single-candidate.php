@@ -36,6 +36,19 @@ while ( have_posts() ) {
 		<div id="primary" class="content-area w-full p-4">
 			<main id="main" class="site-main" role="main">
 				<?php
+				// echo get_post()->ID;
+
+				// $post_type = get_post_type(get_the_ID());
+		    // $taxonomies = get_object_taxonomies($post_type);
+		    // $taxonomy_names = wp_get_object_terms(get_the_ID(), $taxonomies,  array("fields" => "names"));
+				// if(!empty($taxonomy_names)) {
+				// 	 foreach($taxonomy_names as $tax_name) {
+				// 			echo "<p> $tax_name </p>";
+				// 	 }
+				// }
+
+				// $taxonomy_objects = get_the_terms( get_post()->ID, 'Tags' );
+		    // var_dump( $taxonomy_objects);
 					$options = get_option( 'bkap20_plugin_applicant' );
 
 					$applicant = get_userdata( $options[get_post()->ID]['applicant_user'] );

@@ -11,25 +11,26 @@
 if ( ! is_user_logged_in() ) {
  	wp_redirect(esc_url(home_url('/')), 307);
 }
-
-$email = get_post_meta( $post->ID, 'email_1', true);
-
-$elected = get_post_meta( $post->ID, 'elected_post', true);
+$options = get_option('bkap20_plugin_officers');
+$email = $options[$post->ID]['email'];
+// var_dump($options);
+$elected = $options[$post->ID]['elected'];
 
 $holderName = '<strong>Post not filled</strong>';
-$holder = get_user_by( 'id', get_post_meta( $post->ID, 'current_holder', true) );
+$holder = get_user_by( 'id', $options[$post->ID]['current_holder'] );
 if ($holder) {
 	$holderName = $holder->first_name . ' ' . $holder->last_name;
 }
 
-$candidates = [];
-$options = get_option( 'bkap20_plugin_applicant' );
-// var_dump($options);
-foreach ($options as $key => $value) {
-	if ($value['officer_post'] == $post->ID) {
-		$candidates[] = $value;
-	}
-}
+$applicants = get_option( 'bkap20_plugin_applicant' );
+// $candidates = [];
+// $options = get_option( 'bkap20_plugin_applicant' );
+// // var_dump($options);
+// foreach ($options as $key => $value) {
+// 	if ($value['officer_post'] == $post->ID) {
+// 		$candidates[] = $value;
+// 	}
+// }
 
 
 get_header();
@@ -60,13 +61,27 @@ while ( have_posts() ) {
 				<h3>This is <?php echo ($elected) ? 'an elected' : 'a co-opted'; ?> post</h3>
 				<h4>The current holder is <span class="text-xl text-black"><?php echo $holderName;?></span></h4>
 				<h4>The applicants are:</h4>
-				<div class="p-4 flex flex-wrap">
+				<div class="p-4 wp-block-buttons">
 					<?php
-					foreach ($candidates as $individual) {
-						echo "<a href='".get_permalink(intval($individual['application_id']))."' class='btn btn-blue mb-6 ml-4'>"
-						.get_user_by( 'id', $individual['applicant_user'])->first_name." "
-						.get_user_by( 'id', $individual['applicant_user'])->last_name. "</a>";
+					// var_dump($applicants);
+					$count = 0;
+					foreach ($applicants as $applicant) {
+						if ($applicant['officer_post'] == $post->ID) {
+							// var_dump($applicant);
+							$count++;
+							$hopeful = get_user_by( 'id', $applicant['applicant_user'] );
+								$hopefulName = $hopeful->first_name . ' ' . $hopeful->last_name;
+								echo '<div class="wp-block-button">
+									<a href="'.get_permalink($applicant['application_id']).'" class="wp-block-button__link">'.$hopefulName.'</a>
+									</div>';
+						}
 					}
+					echo (! $count) ? '<h3>Currently there are no applicants for this post</h3>' : '';
+					// foreach ($candidates as $individual) {
+					// 	echo "<a href='".get_permalink(intval($individual['application_id']))."' class='btn btn-blue mb-6 ml-4'>"
+					// 	.get_user_by( 'id', $individual['applicant_user'])->first_name." "
+					// 	.get_user_by( 'id', $individual['applicant_user'])->last_name. "</a>";
+					// }
 					?>
 				</div>
 				<?php
