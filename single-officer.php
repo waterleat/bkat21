@@ -56,7 +56,7 @@ while ( have_posts() ) {
 	<div class="bg-white">
 		<div id="primary" class="content-area w-full p-4">
 			<main id="main" class="site-main" role="main">
-				<div class="text-right"><a href="mailto:<?php echo $email; ?>" class="btn btn-gray">email current holder</a></div>
+				<div class="text-right p-4"><a href="mailto:<?php echo $email; ?>" class="btn btn-gray">email current holder</a></div>
 
 				<h3>This is <?php echo ($elected) ? 'an elected' : 'a co-opted'; ?> post</h3>
 				<h4>The current holder is <span class="text-xl text-black"><?php echo $holderName;?></span></h4>

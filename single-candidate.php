@@ -50,24 +50,43 @@ while ( have_posts() ) {
 				// $taxonomy_objects = get_the_terms( get_post()->ID, 'Tags' );
 		    // var_dump( $taxonomy_objects);
 					$options = get_option( 'bkap20_plugin_applicant' );
-
+					// var_dump($options[get_post()->ID]);
 					$applicant = get_userdata( $options[get_post()->ID]['applicant_user'] );
 					$applicantName = $applicant->display_name;
 
 					$office = get_post( $options[get_post()->ID]['officer_post'] );
+					$officerid = $office->ID;
 					$officeTitle = $office->post_title;
+
+					$file_url = $options[get_post()->ID]['media_upload'];
+					$file = wp_check_filetype( $file_url );
+					// var_dump($file);
+					$filetype = (substr($file['type'], 0, 5) === 'image');
+					// var_dump($filetype);
 					?>
 					<div >
+						<p class="text-right p-4"><a href="<?php echo get_post_permalink( $officerid ); ?>"
+							class="btn btn-gray">Return other applicants</a></p>
 						<div class="flex">
 							<h4 class="w-36 xs:w-1/3  text-right pr-4 my-4">Application for post of</h4>
-							<?php echo "<h2>",$officeTitle,"</h2>"; ?>
+							<h2> <?php echo $officeTitle; ?> </h2>
 						</div>
 						<div class="flex">
 							<h4 class="w-36 xs:w-1/3  text-right pr-4 my-4">by member</h4>
 							<h2><?php echo $applicantName; ?></h2>
 						</div>
 						<div class="mt-8">
-							Candidate's Statement
+							<h4 class="w-36 xs:w-1/3  text-right pr-4 my-4">Candidate's Statement</h4>
+							<div class="p-8">
+							<?php
+							if (substr($file['type'], 0, 5) === 'image') {
+								echo "<img src='$file_url' class='w-100'>";
+							} else {
+								echo "<a href='$file_url' class='ml-8 btn btn-gray'>link to file</a>";
+							}
+							?>
+
+						</div>
 						</div>
 					</div>
 				<?php
