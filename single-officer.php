@@ -32,7 +32,6 @@ $applicants = get_option( 'bkap20_plugin_applicant' );
 // 	}
 // }
 
-
 get_header();
 /* Start the Loop */
 while ( have_posts() ) {
@@ -56,7 +55,154 @@ while ( have_posts() ) {
 	<div class="bg-white">
 		<div id="primary" class="content-area w-full p-4">
 			<main id="main" class="site-main" role="main">
-				<div class="text-right p-4"><a href="mailto:<?php echo $email; ?>" class="btn btn-gray">email current holder</a></div>
+				<?php
+				$cats =[];
+
+				$args = [
+					'numberposts' => -1,
+					'post_type' => 'agmitem',
+					// 'category__in' => $cats,
+				];
+				$agmlist = get_posts($args);
+				// var_dump($agmlist);
+				foreach ($agmlist as $agmpost) {
+					// echo "<br>$agmpost->post_title";
+					$post_tags = get_the_tags($agmpost->ID);
+					// var_dump($post_tags);
+					if ($post_tags) {
+						foreach ($post_tags as $key => $value) {
+							// code...
+							if ($value->name == 'election') {
+								// one of the 7
+								$ecats = get_the_terms( $agmpost->ID, 'category' );
+								foreach ($ecats as $key => $value) {
+									if ($value->name == 'AGM'){
+										// unset($ecats[$key]);
+										continue;
+									}
+									// if ($value->name == 'DRC'){
+									// 	$elist[$agmpost->ID][] = $value->term_id;
+									// }
+									$elist[$agmpost->ID][] = $value->term_id;
+								}
+								// foreach ($ecats as $key => $value) {
+								// 	if (count($ecats) = 1) {
+								// 		// we should NOT be DRC
+								// 		$elist[$agmpost->ID] = $value->ID;
+								// 	}else {
+								// 		$elist[$agmpost->ID] = 'DRC';
+								// 	}
+								// }
+								// $parent_id = $agmpost->ID;
+
+								// var_dump($elist[$agmpost->ID]);
+								// echo $agmpost->post_title,'<br>';
+							}
+						}
+					}
+				}
+				// var_dump($elist);
+
+				// the 7 election post IDs in elist
+				// foreach ($elist as $epostid) {
+				// 	$ecats = get_the_terms( $epostid, 'category' );
+				// 	foreach ($ecats as $key => $value) {
+				// 		if ($value->name == 'AGM'){
+				// 			unset($ecats[$key]);
+				// 		}
+				// 	}
+				// }
+
+				$post_categories = get_the_terms( $post->ID, 'category' );
+				foreach ($post_categories as $key => $value) {
+					if ($value->name == 'AGM'){
+						// unset($post_categories[$key]);
+						continue;
+					}
+					$plist[] = $value->term_id;
+					// elseif ($value->name == 'BKA' ) {
+					// 	echo '<br>$link = BKA<br>';
+					//
+					// } elseif ($value->name == 'DRC') {
+					// 	echo "DRC ";
+					// }
+					// if ($value->name == 'Kendo' || $value->name == 'Iaido' || $value->name == 'Jodo') {
+					// 	echo "bu is $value->name ";
+					// }
+				}
+				// echo "string<br>";
+				// var_dump($plist);
+				// echo "<br>elist<br>";
+				// var_dump($elist);
+				// echo "string<br>";
+
+				foreach ($elist as $key => $value) {
+					if ($plist == $value) {
+						$returnpost = $key;
+						// echo "key is $key";
+						break;
+					}
+				}
+				// if (count($post_categories) > 1) {
+				//
+				// }
+				// // $catlist = substr($catlist, 0, strlen($catlist)-2);
+				// // var_dump($catlist);
+				// $args = [
+				// 	'numberposts' => -1,
+				// 	'post_type' => 'agmitem',
+				// 	// 'category__in' => $cats,
+				// ];
+				// $agmlist = get_posts($args);
+				// // var_dump($agmlist);
+				// foreach ($agmlist as $agmpost) {
+				// 	// echo "<br>$agmpost->post_title";
+				// 	$post_tags = get_the_tags($agmpost->ID);
+				// 	// var_dump($post_tags);
+				// 	if ($post_tags) {
+				// 		foreach ($post_tags as $key => $value) {
+				// 			// code...
+				// 			if ($value->name == 'election') {
+				// 				$elist[] = $agmpost->ID;
+				// 				// $parent_id = $agmpost->ID;
+				// 				// var_dump($parent_id);
+				// 				$c = get_the_terms( $agmpost->ID, 'category' );
+				// 				foreach ($c as $key => $value) {
+				// 					if ($value->name == 'BKA') {
+				// 						echo $agmpost->ID,'<br>';
+				// 					}
+				// 				}
+				// 			}
+				// 		}
+				// 	}
+				// }
+				// // var_dump($elist);
+				//
+				// $args2 = [
+				// 	'numberposts' => -1,
+				// 	// 'post_type' => 'agmitem',
+				// 	'include' => $elist,
+				// 	'category__in' => $cats,
+				// ];
+				// $newlist = get_posts($args2);
+				// var_dump($newlist);
+				//
+				// foreach ($elist as $e) {
+				// 	$et = get_the_terms( $e, 'category' );
+				// 	// var_dump($et);
+				// 	echo "$e<br>";
+				// 	foreach ($et as $t) {
+				// 		if ($t->name == 'AGM'){continue;}
+				// 		if ($t->name == 'BKA')
+				// 		echo "$t->name ";
+				// 	}
+				// 	echo "<br>";
+				// }
+				?>
+				<div class="flex justify-between p-4">
+					<a href="<?php echo get_permalink($returnpost); ?>" class="btn btn-gray">Return to other Officers</a>
+					<a href="mailto:<?php echo $email; ?>" class="btn btn-gray">email current holder</a>
+				</div>
 
 				<h3>This is <?php echo ($elected) ? 'an elected' : 'a co-opted'; ?> post</h3>
 				<h4>The current holder is <span class="text-xl text-black"><?php echo $holderName;?></span></h4>

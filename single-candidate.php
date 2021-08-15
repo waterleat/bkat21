@@ -65,7 +65,7 @@ while ( have_posts() ) {
 					// var_dump($filetype);
 					?>
 					<div >
-						<p class="text-right p-4"><a href="<?php echo get_post_permalink( $officerid ); ?>"
+						<p class="p-4"><a href="<?php echo get_post_permalink( $officerid ); ?>"
 							class="btn btn-gray">Return other applicants</a></p>
 						<div class="flex">
 							<h4 class="w-36 xs:w-1/3  text-right pr-4 my-4">Application for post of</h4>
