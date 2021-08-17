@@ -37,6 +37,29 @@ while ( have_posts() ) {
 			<main id="main" class="site-main" role="main">
 				<?php
 					the_content();
+					// If post has these tags dissalllow questions.
+					$post_tags = get_the_tags($post_id);
+					$tag_names = [];
+					$allowQuestions = TRUE;
+					if ($post_tags) {
+						foreach ($post_tags as $key => $value) {
+							if ($value->name == 'agenda'
+							|| $value->name == 'election'
+							|| $value->name == 'bu') {
+								$allowQuestions = FALSE;
+								break;
+							};
+						}
+					}
+					if ($allowQuestions) {
+						// $code_text = '[question-form]';
+						if ($allowQuestions ) {
+							echo '<div class="p-4	">';
+							echo do_shortcode('[question-form]');
+							echo "</div>";
+						}
+					}
+
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) {
 						comments_template();
