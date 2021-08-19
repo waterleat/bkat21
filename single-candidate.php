@@ -91,6 +91,15 @@ while ( have_posts() ) {
 					</div>
 				<?php
 					the_content();
+
+					echo '<div class="p-4	">';
+					echo do_shortcode('[question-form]');
+					echo "</div>";
+
+					echo '<div class="md:p-4">';
+					echo do_shortcode('[question-slideshow]');
+					echo "</div>";
+
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) {
 						comments_template();
