@@ -18,3 +18,30 @@
     }
   }
 }
+
+// membership fees table
+figure.fees table {
+	tbody tr td {
+		@apply p-2 border-t border-l border-gray-400 ;
+	}
+	thead {
+		tr{
+			th{
+				@apply  border-b-2 border-gray-600 ;
+				@apply p-2 font-bold text-lg ;
+			}
+		}
+	}
+	tbody {
+		tr {
+			th{
+				@apply p-2 font-bold text-lg border-r-2 border-gray-600 ;
+
+			}
+			// td {
+			// 	@apply p-2 border-t border-l border-gray-400 ;
+			// }
+		}
+	}
+	@apply border border-2 border-gray-600 ;
+}
