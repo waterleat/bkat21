@@ -114,7 +114,8 @@
 		<!-- <li><strong>Eventcode:</strong> <?php // echo $bu , eo_get_the_start( 'ymd', $post->ID, $post->occurrence_id ); ?></li> -->
 	</ul>
 	<div class="pl-16 py-4">
-		<a href="<?php echo esc_url( 'https://membership.britishkendoassociation.com/html/book_events.php' ); ?>" class="btn btn-blue "  >Book Event</a>
+		<!-- <a href="<?php // echo esc_url( 'https://membership.britishkendoassociation.com/html/book_events.php' ); ?>" class="btn btn-blue "  >Book Event</a> -->
+		<a href="<?php echo esc_url( 'https://membership.britishkendoassociation.com/login.php' ); ?>" class="btn btn-blue "  >Book Event</a>
 	</div>
 </div>
 	<!-- Does the event have a venue? -->

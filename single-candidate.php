@@ -66,7 +66,7 @@ while ( have_posts() ) {
 					?>
 					<div >
 						<p class="p-4"><a href="<?php echo get_post_permalink( $officerid ); ?>"
-							class="btn btn-gray">Return other applicants</a></p>
+							class="btn btn-gray">Return to other applicants</a></p>
 						<div class="flex">
 							<h4 class="w-36 xs:w-1/3  text-right pr-4 my-4">Application for post of</h4>
 							<h2> <?php echo $officeTitle; ?> </h2>

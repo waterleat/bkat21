@@ -37,7 +37,7 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 					?>
 
 					<!-- logo & title -->
-					<div class="relative logo mx-auto pt-6 md:pb-4 md:pt-0 md:pl-2  md:m-0 z-10">
+					<div class="relative logo mx-auto pt-8 md:pb-4 md:pt-0 md:pl-2  md:m-0 z-10">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img src="<?php bloginfo( 'template_directory' ); ?>/assets/dist/images/BKA_logo.png" alt="logo">
 						</a>
@@ -49,14 +49,14 @@ $membership_login_url = "https://membership.britishkendoassociation.com/login.ph
 					<!-- membership agm Logout buttons -->
 					<div class="absolute top-0 right-0">
 						<div class="flex flex-col justify-around content-around md:flex-row md:w-100 lg:w-128 mr-2 md:mr-0 md:py-2">
-							<a href="<?php echo esc_url( $membership_login_url ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 border border-yellow-600 rounded text-white text-center bg-gradient-to-r from-yellow-600 to-red-500 hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Login', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class="sm:hidden"> Members / Join</span><span class="hidden sm:inline"> Member's Area / Join</span></a>
+							<a href="<?php echo esc_url( $membership_login_url ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 border border-yellow-600 rounded text-white text-center bg-gradient-to-r from-yellow-600 to-red-500 hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Join or Renew', 'bka2021' ); ?>"><span class="dashicons dashicons-admin-home"></span><span class=""> Join / Renew</span></a>
 							<?php
 							if (! is_user_logged_in() ) { ?>
-								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'AGM 2021' ) ) ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
+								<a href="<?php echo esc_url( get_permalink( get_page_by_title( 'BKA Members' ) ) ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Members Area Login', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> Members Docs</span></a>
 							<?php } else { ?>
 								<!-- /?p=4697 -->
-								<a href="<?php echo site_url( 'index.php/agmitem/agm-discussion-area' ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> 2021 AGM</span></a>
-								<a href="<?php echo esc_url( home_url('wp-login.php?action=logout') ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'AGM 2021', 'bka2021' ); ?>"><span class="dashicons dashicons-external"></span><span class=""> Logout</span></a>
+								<a href="<?php echo site_url( 'index.php/agmitem/members-only-area' ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Members Area', 'bka2021' ); ?>"><span class="dashicons dashicons-groups"></span><span class=""> Members Docs</span></a>
+								<a href="<?php echo esc_url( home_url('wp-login.php?action=logout') ); ?>" class="mt-2 md:mr-2 px-2 py-1 md:py-2 bg-gradient-to-r from-yellow-600 to-red-500 border border-yellow-600 rounded text-white text-right xs:text-center  hover:from-red-500 hover:to-yellow-600 hover:text-white hover:no-underline" alt="<?php esc_attr_e( 'Members Area', 'bka2021' ); ?>"><span class="dashicons dashicons-external"></span><span class=""> Logout</span></a>
 							<?php } ?>
 						</div>
 					</div>
