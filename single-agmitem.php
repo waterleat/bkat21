@@ -36,6 +36,37 @@ while ( have_posts() ) {
 		<div id="primary" class="content-area w-full p-4">
 			<main id="main" class="site-main" role="main">
 				<?php
+				$elections = get_page_by_title( 'Officer Nominations', '', 'agmitem' );
+				// echo $elections->ID;
+				// echo $post->ID;
+				if ($post->ID == $elections->ID) {
+
+					$taxonomies = get_object_taxonomies('officer');
+					// var_dump($taxonomies);
+					$list = [];
+					$options = get_option( 'bkap20_plugin_applicant' ) ?: array();
+					foreach ($options as $key => $value) {
+						// var_dump($key);
+						$taxonomy_names = wp_get_object_terms($key, $taxonomies,  array("fields" => "names"));
+						// var_dump($taxonomy_names);
+						if (in_array(date('Y'),$taxonomy_names)) {
+							$list[$key] = $value;
+						}
+					}
+					echo '<table class="thead-tr-th-p-2 tbody-tr-td-p-2"><tr><th>Applicant</th><th>Office</th><th class="text-center">Statement</th></tr>';
+					foreach ($list as $option) {
+						$user = get_userdata($option['applicant_user']);
+						$name = $user->last_name .', ' . $user->first_name;
+						$officer_post = get_post($option['officer_post']);
+						$officer_title = $officer_post->post_title;
+
+						echo "<tr><td>{$name}</td><td>{$officer_title}</td><td><a href='{$option['media_upload']}' class='btn-gray btn-small'>view</a></td></tr>";
+					}
+
+					echo '</table>';
+
+				} else {
+
 					the_content();
 					// If post has these tags dissalllow questions.
 					$post_tags = get_the_tags(get_the_ID());
@@ -68,6 +99,7 @@ while ( have_posts() ) {
 					if ( comments_open() || get_comments_number() ) {
 						comments_template();
 					};
+				}
 				?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
