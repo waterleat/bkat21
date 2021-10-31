@@ -19,6 +19,15 @@
   }
 }
 
+// contact us tables
+.tcontact tbody{
+  tr{
+    td{
+      @apply p-3 ;
+    }
+  }
+}
+
 // membership fees table
 figure.fees table {
 	tbody tr td {

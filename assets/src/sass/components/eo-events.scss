@@ -1,0 +1,33 @@
+// Event organiser classes
+// widget area in sidebar
+.eo-widget-cal-wrap table {
+  width: 90%;
+  @apply mx-auto ;
+}
+
+#eo-event-categories-2, #eo_event_list_widget-3 {
+	ul {
+		@apply list-none pl-6 ;
+	}
+}
+
+#eo_calendar_widget-3_content {
+	thead {
+		@apply bg-gray-200 ;
+	}
+	tbody {
+		@apply text-center ;
+	}
+	.eo-event-future {
+		@apply bg-green-300 ;
+		& a {
+			@apply text-black ;
+		}
+	}
+	.eo-event-past {
+		@apply bg-gray-200 ;
+		& a {
+			@apply text-black ;
+		}
+	}
+}
