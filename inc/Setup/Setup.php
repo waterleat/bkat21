@@ -12,7 +12,29 @@ class Setup
     {
         add_action( 'after_setup_theme', [ $this, 'setup' ] );
         add_action( 'after_setup_theme', [ $this, 'content_width' ], 0);
+
+				// hacker prevention from https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username
+				add_action( 'template_redirect', [ $this, 'redirect_to_home_if_author_parameter' ] );
+				add_filter( 'rest_endpoints', [ $this, 'disable_rest_endpoints' ], 1 );
     }
+
+		public function redirect_to_home_if_author_parameter() {
+			$is_author_set = get_query_var( 'author', '' );
+			if ( $is_author_set != '' && !is_admin()) {
+				wp_redirect( home_url(), 301 );
+				exit;
+			}
+		}
+
+		public function disable_rest_endpoints ( $endpoints ) {
+			if ( isset( $endpoints['/wp/v2/users'] ) ) {
+				unset( $endpoints['/wp/v2/users'] );
+			}
+			if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
+				unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
+			}
+			return $endpoints;
+		}
 
     public function setup()
     {
