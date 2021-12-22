@@ -2,14 +2,14 @@
 	"name": "bka/bka2021",
 	"description": "A theme for BKA to resemble striking_r, based on Alecaddd WordPress Starter Theme AWPS",
 	"keywords": ["WordPress", "Theme", "Starter"],
-	"homepage": "https://github.com/waterleat/bka2020",
+	"homepage": "https://github.com/waterleat/bkat21",
 	"license": "GPL-3.0",
 	"version": "3.0.6",
 	"authors": [
 		{
 			"name": "David Street",
 			"email": "webmaster@britishkendoassociation.com",
-			"homepage": "http://britishkendoassociation.com",
+			"homepage": "https://britishkendoassociation.com",
 			"role": "Developer"
 		}
 	],
@@ -21,7 +21,9 @@
 		"php-parallel-lint/php-parallel-lint": "^1.2",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-		"wp-coding-standards/wpcs": "^2.3"	},
+		"wp-coding-standards/wpcs": "^2.3",
+		"squizlabs/php_codesniffer": "^3.6",
+		"phpcompatibility/php-compatibility": "^9.3"	},
 	"autoload": {
 		"psr-4": { "Bka2021\\": "./inc" },
 		"files": [ "./inc/Helpers.php" ]
@@ -29,6 +31,7 @@
 	"scripts": {
 		"test": ["@phpcs", "@parallel-lint"],
 		"phpcs": "phpcs",
-		"parallel-lint": "parallel-lint --blame --exclude vendor/ ."
+		"parallel-lint": "parallel-lint --blame --exclude vendor/ .",
+		"sniffer:php8": "phpcs -p ./inc --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.0"
 	}
 }

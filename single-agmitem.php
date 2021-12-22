@@ -40,6 +40,7 @@ while ( have_posts() ) {
 				// echo $elections->ID;
 				// echo $post->ID;
 				if ($post->ID == $elections->ID) {
+					the_content();
 
 					$taxonomies = get_object_taxonomies('officer');
 					// var_dump($taxonomies);
@@ -60,7 +61,10 @@ while ( have_posts() ) {
 						$officer_post = get_post($option['officer_post']);
 						$officer_title = $officer_post->post_title;
 
-						echo "<tr><td>{$name}</td><td>{$officer_title}</td><td><a href='{$option['media_upload']}' class='btn-gray btn-small'>view</a></td></tr>";
+						$statement = ($option['media_upload']) ? '<a href="'.$option['media_upload'].'" class="btn-gray btn-small">view</a>' : 'No file uploaded.';
+
+						echo "<tr><td>{$name}</td><td>{$officer_title}</td><td>{$statement}</td></tr>";
+						// echo "<tr><td>{$name}</td><td>{$officer_title}</td><td><a href='{$option['media_upload']}' class='btn-gray btn-small'>view</a></td></tr>";
 					}
 
 					echo '</table>';
@@ -83,16 +87,17 @@ while ( have_posts() ) {
 						}
 					}
 					if ($allowQuestions) {
-						// $code_text = '[question-form]';
-						if ($allowQuestions ) {
-							echo '<div class="md:p-4	">';
-							echo do_shortcode('[question-form]');
-							echo "</div>";
+						// question form and display removed prior to 2021 agm
 
-							echo '<div class="md:p-4">';
-							echo do_shortcode('[question-slideshow]');
-							echo "</div>";
-						}
+						// if ($allowQuestions ) {
+						// 	echo '<div class="md:p-4	">';
+						// 	echo do_shortcode('[question-form]');
+						// 	echo "</div>";
+						//
+						// 	echo '<div class="md:p-4">';
+						// 	echo do_shortcode('[question-slideshow]');
+						// 	echo "</div>";
+						// }
 					}
 
 					// If comments are open or we have at least one comment, load up the comment template.
